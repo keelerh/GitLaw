@@ -36,7 +36,7 @@ centerBox();
 
 /* Menu Bar Functions */
 
-
+/*
 function commentMode() {
   document.getElementById("comment").style.visibility = "visible";
   document.getElementById("wrapper").style.opacity = ".25";
@@ -50,6 +50,7 @@ function cancelComment() {
   document.getElementById("comment").style.visibility = "hidden";
   document.getElementById("wrapper").style.opacity = "1";
 }
+*/
 
 /* SHARE FUNCTIONS */
 var shareMode = false;
@@ -75,6 +76,41 @@ function cancelShare() {
   $('html').scrollTop(scrollPos);
   shareMode = false;
 }
+
+
+/* COMMENT FUNCTIONS*/
+var commentMode = false;
+function commentDoc() {
+  document.getElementById("popup-comment").style.visibility = "visible";
+  document.getElementById("wrapper").style.opacity = ".25";
+  commentMode = true;
+}
+
+$('#close-comment').click(function () {
+  cancelComment();
+});
+
+function confirmComment() {
+
+  cancelComment();
+  $(".editor").css("border", "3px solid red");
+  $("#TText").css("cursor", "crosshair");
+
+  $(".editor").click(function () {
+    $(".editor").css("border", "0");
+    $("#TText").css("cursor", "");
+  });
+}
+
+
+
+
+function cancelComment() {
+  document.getElementById("popup-comment").style.visibility = "hidden";
+  document.getElementById("wrapper").style.opacity = "1";
+}
+
+
 
 /* DOWNLOAD FUNCTIONS */
 function downloadDoc() {

@@ -13,7 +13,7 @@
    <div id="wrapper">
         <div class="menuBar">
             <ul>
-                <li onclick="comment()" ><a class="commentMode">Comment</a></li>
+                <li onclick="commentDoc()"><a>Comment</a></li>
                 <li onclick="shareDoc()"><a>Share</a></li>
               
               <li>
@@ -211,13 +211,18 @@
         </div>
     </div>
    </div>
-    <div class="popup" id="comment">
-        <div id="commentPopup">
-            <textarea></textarea>
-            <!--<a class="popupButton" onClick="addComment()">Add Comment</a>-->
-            <!--<a onClick="cancelComment()">Cancel</a>-->
-            <a class="commentMode">Add Comment</a>
+    <div class="popup-box" id="popup-comment">
+      <div class="close" id="close-comment">X</div>
+        <div class="top">
+            <h2>Add a Comment</h2>
         </div>
+      <div class="bottom">    
+        <form >
+          <input type="text" id="comment_text" size="55"> <br>
+            <p class="italic">After clicking "Add Comment", click the section of text you wish to comment on</p>
+          <a class="popupButton" onClick="confirmComment()">Add Comment</a>
+        </form>
+      </div>
     </div> 
     <div class="popup-box" id="popup-share">
         <div class="close" id="close-share">X</div>

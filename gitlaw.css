@@ -326,7 +326,17 @@ a.popupButton {
 #popup-share {
     visibility: hidden;
 }
-
+#popup-comment{
+    visibility: hidden;
+}
 .commentMode {
     cursor: text;
+}
+.comments{
+
+}
+p.italic{
+    font-style:italic;
+    color:gray;
+    text-align: justify;
 }
