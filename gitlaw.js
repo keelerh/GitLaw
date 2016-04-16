@@ -45,7 +45,27 @@ $('#close-share').click(function () {
   cancelShare();
 });
 
+var newCollaborators = ["<img class='img-circle' src='images/mitch.jpg' /> <p class='user'>",
+                        "<img class='img-circle' src='images/robert.jpg' /> <p class='user'>",
+                        "<img class='img-circle' src='images/leslie.jpg' /> <p class='user'>",
+                        "<img class='img-circle' src='images/johnnie.jpg' /> <p class='user'>",
+                        "<img class='img-circle' src='images/frank.jpg' /> <p class='user'>"]
+var i = 0;
+
 function confirmShare() {
+  if (i > 4) {
+    cancelShare();
+  }
+  var name = document.getElementById('name');
+  document.getElementById("share").style.visibility = "hidden";
+  var list = document.getElementById('menuItems');
+  var entry = document.createElement('li');
+  var circle = document.createElement('div');
+  circle.className = 'imgWrap';
+  circle.innerHTML = newCollaborators[i] + name.value + "</p>";
+  entry.appendChild(circle);
+  list.appendChild(entry);
+  i++
   cancelShare();
 }
 
