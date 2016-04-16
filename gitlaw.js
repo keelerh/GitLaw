@@ -33,22 +33,6 @@ centerBox();
 
 /* Menu Bar Functions */
 
-/*
-function commentMode() {
-  document.getElementById("comment").style.visibility = "visible";
-  document.getElementById("wrapper").style.opacity = ".25";
-}
-
-function addComment() {
-  cancelComment();
-}
-
-function cancelComment() {
-  document.getElementById("comment").style.visibility = "hidden";
-  document.getElementById("wrapper").style.opacity = "1";
-}
-*/
-
 /* share functions */
 var shareMode = false;
 function shareDoc() {
@@ -189,7 +173,7 @@ function newVersionFunc() {
       newEvent.onclick = function() {oldVersion()};
       newEvent.className = "timeline-item active";
       var pic = document.createElement('div');
-      pic.innerHTML = "<img class='profile-pic' src='http://images.huffingtonpost.com/2016-03-07-1457372468-7442274-trump.jpg' /><span class='marker'><span class='dot'></span></span>"
+      pic.innerHTML = "<img class='profile-pic' src='images/jessica.jpg' /><span class='marker'><span class='dot'></span></span>"
       newEvent.appendChild(pic);
       var time = document.createElement('div');
       time.className = "timestamp";
