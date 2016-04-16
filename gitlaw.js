@@ -33,22 +33,6 @@ centerBox();
 
 /* Menu Bar Functions */
 
-/*
-function commentMode() {
-  document.getElementById("comment").style.visibility = "visible";
-  document.getElementById("wrapper").style.opacity = ".25";
-}
-
-function addComment() {
-  cancelComment();
-}
-
-function cancelComment() {
-  document.getElementById("comment").style.visibility = "hidden";
-  document.getElementById("wrapper").style.opacity = "1";
-}
-*/
-
 /* share functions */
 var shareMode = false;
 function shareDoc() {
@@ -61,7 +45,27 @@ $('#close-share').click(function () {
   cancelShare();
 });
 
+var newCollaborators = ["<img class='img-circle' src='images/mitch.jpg' /> <p class='user'>",
+                        "<img class='img-circle' src='images/robert.jpg' /> <p class='user'>",
+                        "<img class='img-circle' src='images/leslie.jpg' /> <p class='user'>",
+                        "<img class='img-circle' src='images/johnnie.jpg' /> <p class='user'>",
+                        "<img class='img-circle' src='images/frank.jpg' /> <p class='user'>"]
+var i = 0;
+
 function confirmShare() {
+  if (i > 4) {
+    cancelShare();
+  }
+  var name = document.getElementById('name');
+  document.getElementById("share").style.visibility = "hidden";
+  var list = document.getElementById('menuItems');
+  var entry = document.createElement('li');
+  var circle = document.createElement('div');
+  circle.className = 'imgWrap';
+  circle.innerHTML = newCollaborators[i] + name.value + "</p>";
+  entry.appendChild(circle);
+  list.appendChild(entry);
+  i++
   cancelShare();
 }
 
@@ -189,7 +193,7 @@ function newVersionFunc() {
       newEvent.onclick = function() {oldVersion()};
       newEvent.className = "timeline-item active";
       var pic = document.createElement('div');
-      pic.innerHTML = "<img class='profile-pic' src='http://images.huffingtonpost.com/2016-03-07-1457372468-7442274-trump.jpg' /><span class='marker'><span class='dot'></span></span>"
+      pic.innerHTML = "<img class='profile-pic' src='images/jessica.jpg' /><span class='marker'><span class='dot'></span></span>"
       newEvent.appendChild(pic);
       var time = document.createElement('div');
       time.className = "timestamp";
