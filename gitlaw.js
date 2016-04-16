@@ -2,9 +2,6 @@
 // has finished loading in the browser.
 var car = {type:"Fiat", model:"500", color:"white"};
 
-
-
-
 var pHight = Math.floor(document.getElementById("timeLine").clientHeight * .94);
 var currentText = "";
 var boxWidth = 400;
@@ -33,6 +30,11 @@ $(window).resize(centerBox);
 $(window).scroll(centerBox);
 centerBox();  
 
+// function dragSticky(){
+//     $$('#container div').each(function(drag){
+//         new Drag.Move(drag);});
+// });
+
 
 /* Menu Bar Functions */
 
@@ -52,7 +54,7 @@ function cancelComment() {
 }
 */
 
-/* SHARE FUNCTIONS */
+/* share functions */
 var shareMode = false;
 function shareDoc() {
   document.getElementById("popup-share").style.visibility = "visible";
@@ -77,12 +79,12 @@ function cancelShare() {
   shareMode = false;
 }
 
-
-/* COMMENT FUNCTIONS*/
+/* comment functions */
 var commentMode = false;
 function commentDoc() {
   document.getElementById("popup-comment").style.visibility = "visible";
   document.getElementById("wrapper").style.opacity = ".25";
+  new Drag.Move(drag);
   commentMode = true;
 }
 
@@ -102,22 +104,17 @@ function confirmComment() {
   });
 }
 
-
-
-
 function cancelComment() {
   document.getElementById("popup-comment").style.visibility = "hidden";
   document.getElementById("wrapper").style.opacity = "1";
 }
 
-
-
-/* DOWNLOAD FUNCTIONS */
+/* download function */
 function downloadDoc() {
   //TODO
 }
 
-/* UPLOAD FUNCTIONS */
+/* upload functions */
 function uploadDoc() {
   document.getElementById("upload").style.visibility = "visible";
   document.getElementById("wrapper").style.opacity = ".25";

@@ -340,3 +340,8 @@ p.italic{
     color:gray;
     text-align: justify;
 }
+
+#container{
+    width: 960px;
+    margin: 100px auto;
+}
