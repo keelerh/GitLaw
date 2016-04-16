@@ -166,7 +166,8 @@
         </div>
     </div>
    </div>
-    <div class="popup-box">
+
+    <div class="popup-box" id="comment">
       <div class="close" id="close-comment">X</div>
         <div class="top">
             <h2>Add a Comment</h2>
@@ -179,26 +180,29 @@
         </form>
       </div>
     </div> 
-    <div class="popup-box" id="popup-share">
+
+    <div class="popup-box" id="share">
         <div class="close" id="close-share">X</div>
         <div class="top">
             <h2>Share</h2>
         </div>
         <div class="bottom">
-            <p><h1>Name:<input type="text" name="Name"><br></h1></p>
+            <p><h1>Name:  <input type="text" name="Name"></h1></p>
             <a class="popupButton" onClick="confirmShare()">Share</a>
         </div>
     </div>
+
     <div class="popup-box" id="upload">
         <div class="close" id="close-upload">X</div>
         <div class="top">
             <h2>Upload File</h2>
         </div>
         <div class="bottom">
-            <p><h1>Select File:<input type="file" id="files" accept="text/plain"><br></h1></p>
+            <p><h1>Select File:  <input type="file" id="files" accept="text/plain"></h1></p>
             <a class="popupButton" onClick="confirmUpload()">Upload</a>
         </div>
     </div> 
+
     <script src="gitlaw.js"></script>
   </body>
 </html>

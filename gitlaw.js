@@ -57,7 +57,7 @@ function cancelComment() {
 /* share functions */
 var shareMode = false;
 function shareDoc() {
-  document.getElementById("popup-share").style.visibility = "visible";
+  document.getElementById("share").style.visibility = "visible";
   document.getElementById("wrapper").style.opacity = ".25";
   shareMode = true;
 }
@@ -72,7 +72,7 @@ function confirmShare() {
 
 function cancelShare() {
   var scrollPos = $(window).scrollTop();
-  document.getElementById("popup-share").style.visibility = "hidden";
+  document.getElementById("share").style.visibility = "hidden";
   document.getElementById("wrapper").style.opacity = "1";
   $("html,body").css("overflow","auto");
   $('html').scrollTop(scrollPos);
@@ -82,7 +82,7 @@ function cancelShare() {
 /* comment functions */
 var commentMode = false;
 function commentDoc() {
-  document.getElementById("popup-comment").style.visibility = "visible";
+  document.getElementById("comment").style.visibility = "visible";
   document.getElementById("wrapper").style.opacity = ".25";
   new Drag.Move(drag);
   commentMode = true;
@@ -105,7 +105,7 @@ function confirmComment() {
 }
 
 function cancelComment() {
-  document.getElementById("popup-comment").style.visibility = "hidden";
+  document.getElementById("comment").style.visibility = "hidden";
   document.getElementById("wrapper").style.opacity = "1";
 }
 
@@ -189,7 +189,7 @@ tinymce.init({
 var lastElement = document.getElementById("5");
 
 function newVersionFunc() {
-      console.log(lastElement.getElementsByClassName("marker"));
+      lastElement.getElementsByClassName("dot")[0].setAttribute("style", "background-color: white;");
       var timeLine = document.getElementById("timeLine");
       var newEvent = document.createElement('div');
       newEvent.onclick = function() {oldVersion()};
