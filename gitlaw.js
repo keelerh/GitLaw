@@ -2,9 +2,6 @@
 // has finished loading in the browser.
 var car = {type:"Fiat", model:"500", color:"white"};
 
-
-
-
 var pHight = Math.floor(document.getElementById("timeLine").clientHeight * .94);
 var currentText = "";
 var boxWidth = 400;
@@ -33,10 +30,15 @@ $(window).resize(centerBox);
 $(window).scroll(centerBox);
 centerBox();  
 
+// function dragSticky(){
+//     $$('#container div').each(function(drag){
+//         new Drag.Move(drag);});
+// });
+
 
 /* Menu Bar Functions */
 
-
+/*
 function commentMode() {
   document.getElementById("comment").style.visibility = "visible";
   document.getElementById("wrapper").style.opacity = ".25";
@@ -50,8 +52,9 @@ function cancelComment() {
   document.getElementById("comment").style.visibility = "hidden";
   document.getElementById("wrapper").style.opacity = "1";
 }
+*/
 
-/* SHARE FUNCTIONS */
+/* share functions */
 var shareMode = false;
 function shareDoc() {
   document.getElementById("popup-share").style.visibility = "visible";
@@ -76,12 +79,42 @@ function cancelShare() {
   shareMode = false;
 }
 
-/* DOWNLOAD FUNCTIONS */
+/* comment functions */
+var commentMode = false;
+function commentDoc() {
+  document.getElementById("popup-comment").style.visibility = "visible";
+  document.getElementById("wrapper").style.opacity = ".25";
+  new Drag.Move(drag);
+  commentMode = true;
+}
+
+$('#close-comment').click(function () {
+  cancelComment();
+});
+
+function confirmComment() {
+
+  cancelComment();
+  $(".editor").css("border", "3px solid red");
+  $("#TText").css("cursor", "crosshair");
+
+  $(".editor").click(function () {
+    $(".editor").css("border", "0");
+    $("#TText").css("cursor", "");
+  });
+}
+
+function cancelComment() {
+  document.getElementById("popup-comment").style.visibility = "hidden";
+  document.getElementById("wrapper").style.opacity = "1";
+}
+
+/* download function */
 function downloadDoc() {
   //TODO
 }
 
-/* UPLOAD FUNCTIONS */
+/* upload functions */
 function uploadDoc() {
   document.getElementById("upload").style.visibility = "visible";
   document.getElementById("wrapper").style.opacity = ".25";

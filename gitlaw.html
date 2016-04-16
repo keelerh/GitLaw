@@ -31,58 +31,58 @@
     <meta name="msapplication-TileImage" content="/favicon-144.png">
     <meta name="msapplication-config" content="/browserconfig.xml">
   </head>
+
   <body style="overflow:hidden;">
    <div id="wrapper">
-        <div class="menuBar">
-            <ul>
-                <li onclick="comment()" ><a class="commentMode">Comment</a></li>
-                <li onclick="shareDoc()"><a>Share</a></li>
-              
-              <li>
-                  <div class="imgWrap">
-                      <img class="img-circle" src="http://images.huffingtonpost.com/2016-03-07-1457372468-7442274-trump.jpg"/>
-                      <p class="user">Me</p>
-                  </div>
-              </li>
-              <li>
-                  <div class="imgWrap">
-                      <img class="img-circle" src="http://cdn.playbuzz.com/cdn/e22985e7-b45c-4e61-89c7-2a5458d22131/840b4a44-bf09-48fd-8066-c021eae58b30_560_420.jpg"/>
-                      <p class="user">Granny</p>
-                  </div>
-              </li>
-              <li>
-                  <div class="imgWrap">
-                      <img class="img-circle" src="http://images.designntrend.com/data/images/full/71178/patrick-j-adams-as-mike-ross.jpg"/>
-                      <p class="user">Mike</p>
-                  </div>
-              </li>
-              <li>
-                  <div class="imgWrap">
-                      <img class="img-circle" src="http://vignette1.wikia.nocookie.net/suits/images/b/b5/Harvey_Reginald_Specter.jpg/revision/latest?cb=20151030191248"/>
-                      <p class="user">Harvey</p>
-                  </div>
-              </li>
-              <li>
-                  <div class="imgWrap">
-                      <img class="img-circle" src="http://ia.media-imdb.com/images/M/MV5BMjIxNDgxMzk2MV5BMl5BanBnXkFtZTcwNjAzNjg2NQ@@._V1_SX640_SY720_.jpg"/>
-                      <p class="user">Jessica</p>
-                  </div>
-              </li>
-              <li onclick="newVersionFunc()" style="float:right" id="newVersion"><a href="#Share">+ New Version</a></li>
-              <li onclick="downloadDoc()" style="float:right"><a href="Downloaded.txt" download>Download</a></li>
-              <li onclick="uploadDoc()" style="float:right" ><a>Upload</a></li>
-            </ul>
-        </div>
+    <div class="menuBar">
+        <ul>
+          <li onclick="commentDoc()"><a>Comment</a></li>
+          <li onclick="shareDoc()"><a>Share</a></li>
+          <li>
+            <div class="imgWrap">
+              <img class="img-circle" src="images/trump.jpg"/>
+              <p class="user">Trump</p>
+            </div>
+          </li>
+          <li>
+            <div class="imgWrap">
+              <img class="img-circle" src="images/granny.jpg"/>
+              <p class="user">Granny</p>
+            </div>
+          </li>
+          <li>
+            <div class="imgWrap">
+              <img class="img-circle" src="images/mike.jpeg"/>
+              <p class="user"/>Mike</p>
+            </div>
+          </li>
+          <li>
+            <div class="imgWrap">
+              <img class="img-circle" src="images/harvey.jpeg"/>
+              <p class="user">Harvey</p>
+            </div>
+          </li>
+          <li>
+              <div class="imgWrap">
+                  <img class="img-circle" src="images/jessica.png"/>
+                  <p class="user">Jessica</p>
+              </div>
+          </li>
+          <li onclick="newVersionFunc()" style="float:right" id="newVersion"><a href="#Share">Publish</a></li>
+          <li onclick="downloadDoc()" style="float:right"><a href="Downloaded.txt" download>Download</a></li>
+          <li onclick="uploadDoc()" style="float:right" ><a>Upload</a></li>
+        </ul>
+    </div>
     <div class="mainWrapper">
-        <div class="editor">
-            <textarea id = "TText">
-                <p>
-                    <p style="text-align: center;">
-                    A G R E E M E N T:
-                    
-                    AGREEMENT made this 11th day of September, 2014, between W (“W"), (Social Security No. ), residing at ___________________ and A (“A"), (Social Security No. ), residing at ___________________; (sometimes W and A are referred to as the “Parties")
-                    </p>
-                    <p>
+      <div class="editor">
+        <textarea id = "TText">
+          <p>
+            <p style="text-align: center;">
+              A G R E E M E N T:
+                  
+              AGREEMENT made this 11th day of September, 2014, between W (“W"), (Social Security No. ), residing at ___________________ and A (“A"), (Social Security No. ), residing at ___________________; (sometimes W and A are referred to as the “Parties")
+            </p>
+            <p>
                     W I T N E S E T H:
                     
                     WHEREAS, a marriage is contemplated by W and A; and
@@ -128,73 +128,6 @@
                     8. If the Parties co-mingle any of their Separate Property such Separate Property shall not become Marital Property unless the Parties agree in writing that it become Marital Property or they place the co-mingled property in joint names or in a joint account.
                     9. The Parties agree that under no circumstances shall their Separate Property be considered Marital Property or community property or quasi-community property or otherwise be subject to any claim or right of the other in the event of a Termination Event herein, but shall remain the Parties' Separate Property, notwithstanding any contrary provision of the law of any jurisdiction. Each of them shall own, hold and freely dispose of their Separate Property, wherever it may be situated and whether it is now owned by him or her or may hereafter be acquired by him or her, free from all rights of the other therein under the laws of any jurisdiction. Each of them hereby waives, renounces and releases any and all rights which he or she may have under the laws of any jurisdiction in and to the other's Separate Property in the event of a Termination Event, including, without limitation, rights to Marital Property, equitable distribution, a distributive share, community property, quasi-community property, or any other rights, whether they be vested, contingent or inchoate.
                     </p>
-                    <p>
-                    ARTICLE IV
-                    MARITAL PROPERTY
-                    A. The following shall constitute the Parties' Marital Property:
-                    1. All property acquired during the marriage until the occurrence of a Termination Event that is not Separate Property as set forth in Article III above.
-                    2. Except as provided for in Article III above, all property acquired by the Parties after the marriage and prior to the occurrence of a Termination Event whether said property is, real, personal or mixed, and wherever situated.
-                    3. Except as otherwise provided herein, the voluntary contribution of Separate Property to acquire property in joint names with right of survivorship or as tenants by the entirety.
-                    4. All property designated by the Parties as Marital Property in a written agreement, executed and acknowledged by the Parties with the same formality as required to conform with Section 236(B)(3) of the New York State Domestic Relations Law.
-                    </p>
-                    <p>
-                    ARTICLE V
-                    TERMINATION EVENT
-                    
-                    A. Termination Event under this Agreement is defined to be the soonest occurrence of the following events:
-                    
-                    1.The date on which a Party provides the other Party with written notice that he or she intends to dissolve the marriage. Said notice shall be delivered by United States Postal Service by registered or certified mail, return, receipt requested or overnight courier with proof of delivery thereon.
-                    2.The commencement of an action for divorce, separation or annulment.
-                    3.The execution of a written separation agreement, executed in compliance with Section 236)B)(3) of the New York State Domestic Relations Law.
-                    </p>
-                    <p>
-                    ARTICLE VI
-                    RIGHTS OF THE PARTIES UPON THE
-                    OCCURRENCE OF A TERMINATION EVENT
-                    A. In the event of a Termination Event:
-                    
-                    1. The marital home shall be placed on the market for sale within one year from the date of the Termination Event and the net proceeds of the sale shall be distributed in accordance with the terms of this Agreement. W has the right to remain in the marital residence up to one (1) year following a Termination Event.
-                    2. Each Party shall retain his or her Separate Property, and the other Party agrees not to make any claim in or to such property. Each of the Parties hereby waives, releases and renounces (notwithstanding any contrary provision of the law of any jurisdiction) any right to or interest in the other Party's Separate Property including, without limitation, an equitable distribution, a distributive share, or any other portion thereof or interest therein, whether as Marital Property, community property, quasi-community property or otherwise.
-                    3. W shall be entitled to Maintenance in accordance with Section 236)B)(3) of the New York State Domestic Relations Law.
-                    4. Except as otherwise provided in this Agreement, all Martial Property as defined in Article IV of this Agreement, shall be divided between the Parties in accordance with the Domestic Relations Law of the State of New York in accordance with Sec. 236 B as it is presently constituted. The date of the occurrence of a Termination Event, shall for all purposes constitute the valuation date.
-                    5. If, within thirty (30) days following a Termination Event, the Parties cannot agree on the value or how to effectuate the distribution of any or all of their Marital Property, then each asset in dispute will be sold at arm's length to a third party and the net proceeds of the sale divided equally between the Parties. If the Parties cannot agree on the sale price of the property and/or the method of sale, then within sixty (60) days of a Termination Event, each Party shall choose a qualified broker or appraiser. Each broker or appraiser shall seek to reach agreement with the other as to the price and method of sale. If the two brokers or appraisers fail to agree within twenty (20) days of their appointment, the two brokers or appraisers shall choose a third broker or appraiser who shall sell the property for maximum price reasonably obtainable given the market conditions at the time of sale. The third broker's value or price will govern.
-                    6. In the event that either Party shall die following the occurrence of a Termination Event, but prior to entry of a decree of dissolution of the marriage, Marital Property shall be divided between the surviving spouse and the deceased spouse's estate as set forth in this Agreement as if a decree of dissolution had been entered on the date of death of the deceased spouse.
-                    </p>
-                    <p>
-                    Witness as to Witness as to
-                    
-                    W : A:
-                    
-                    ______________________________ ______________________________
-                    
-                    
-                    STATE OF NEW YORK )
-                    
-                    )ss:
-                    
-                    COUNTY OF NEW YORK )
-                    
-                    On this_________________, before me, the undersigned, a Notary Public for said State, personally appeared W , personally known to be or proved to me on the basis of satisfactory evidence to be the individual whose name is subscribed to the within instrument and acknowledged to me that she executed the same in her capacity, and that her signature on the instrument, the individual, or person upon behalf of which the individual acted, executed the instrument.
-                    
-                    Notary Public
-                    
-                    STATE OF NEW YORK )
-                    
-                    )ss:
-                    
-                    COUNTY OF NEW YORK )
-                    
-                    On this ________________, before me, the undersigned, a Notary Public for said State, personally appeared A , personally known to be or proved to me on the basis of satisfactory evidence to be the individual whose name is subscribed to the within instrument and acknowledged to me that he executed the same in his capacity, and that his signature on the instrument, the individual, or person upon behalf of which the individual acted, executed the instrument.
-                    
-                    Notary Public
-                    
-                    SCHEDULE A
-                    
-                    Assets
-                    
-                    Liabilities
-                
-                    </p>
                 </p>
             </textarea>
         </div>
@@ -233,13 +166,18 @@
         </div>
     </div>
    </div>
-    <div class="popup" id="comment">
-        <div id="commentPopup">
-            <textarea></textarea>
-            <!--<a class="popupButton" onClick="addComment()">Add Comment</a>-->
-            <!--<a onClick="cancelComment()">Cancel</a>-->
-            <a class="commentMode">Add Comment</a>
+    <div class="popup-box">
+      <div class="close" id="close-comment">X</div>
+        <div class="top">
+            <h2>Add a Comment</h2>
         </div>
+      <div class="bottom">    
+        <form >
+          <input type="text" id="comment_text" size="55"> <br>
+            <p class="italic">After clicking "Add Comment", click the section of text you wish to comment on</p>
+          <a class="popupButton" onClick="confirmComment()">Add Comment</a>
+        </form>
+      </div>
     </div> 
     <div class="popup-box" id="popup-share">
         <div class="close" id="close-share">X</div>
