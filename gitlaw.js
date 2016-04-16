@@ -30,11 +30,6 @@ $(window).resize(centerBox);
 $(window).scroll(centerBox);
 centerBox();  
 
-// function dragSticky(){
-//     $$('#container div').each(function(drag){
-//         new Drag.Move(drag);});
-// });
-
 
 /* Menu Bar Functions */
 
@@ -84,7 +79,6 @@ var commentMode = false;
 function commentDoc() {
   document.getElementById("comment").style.visibility = "visible";
   document.getElementById("wrapper").style.opacity = ".25";
-  new Drag.Move(drag);
   commentMode = true;
 }
 
