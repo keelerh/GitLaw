@@ -53,19 +53,18 @@ var newCollaborators = ["<img class='img-circle' src='images/mitch.jpg' /> <p cl
 var i = 0;
 
 function confirmShare() {
-  if (i > 4) {
-    cancelShare();
+  if (i < 5) {
+    var name = document.getElementById('name');
+    document.getElementById("share").style.visibility = "hidden";
+    var list = document.getElementById('menuItems');
+    var entry = document.createElement('li');
+    var circle = document.createElement('div');
+    circle.className = 'imgWrap';
+    circle.innerHTML = newCollaborators[i] + name.value + "</p>";
+    entry.appendChild(circle);
+    list.appendChild(entry);
+    i++
   }
-  var name = document.getElementById('name');
-  document.getElementById("share").style.visibility = "hidden";
-  var list = document.getElementById('menuItems');
-  var entry = document.createElement('li');
-  var circle = document.createElement('div');
-  circle.className = 'imgWrap';
-  circle.innerHTML = newCollaborators[i] + name.value + "</p>";
-  entry.appendChild(circle);
-  list.appendChild(entry);
-  i++
   cancelShare();
 }
 
