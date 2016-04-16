@@ -15,7 +15,6 @@ body, html {
 .menuBar{
     position: relative;
     width:97.5%;
-    height: 9%;
     background-color: #bebebe;
     z-index: 10000;
 }
@@ -84,10 +83,6 @@ li a:active{
   cursor: pointer;
   visibility: hidden;
   opacity: 0;
-
-  /*remove comment if you want a gradual transition between states
-  -webkit-transition: visibility opacity 0.2s;
-  */
 }
 
 .imgWrap:hover .user {
@@ -98,7 +93,6 @@ li a:active{
 .mainWrapper{
     overflow: hidden;
     width:97.5%;
-    margin: 3% .5% 0 .5%;
     height: 90%;
 }
 
@@ -114,6 +108,7 @@ li a:active{
 div {
     box-sizing: border-box;
 }
+
 .timeline {
     float: right;
     width: 24%;
