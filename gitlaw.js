@@ -30,11 +30,6 @@ $(window).resize(centerBox);
 $(window).scroll(centerBox);
 centerBox();  
 
-// function dragSticky(){
-//     $$('#container div').each(function(drag){
-//         new Drag.Move(drag);});
-// });
-
 
 /* Menu Bar Functions */
 
@@ -84,7 +79,6 @@ var commentMode = false;
 function commentDoc() {
   document.getElementById("comment").style.visibility = "visible";
   document.getElementById("wrapper").style.opacity = ".25";
-  new Drag.Move(drag);
   commentMode = true;
 }
 
@@ -189,7 +183,7 @@ tinymce.init({
 var lastElement = document.getElementById("5");
 
 function newVersionFunc() {
-      lastElement.getElementsByClassName("dot")[0].setAttribute("style", "background-color: white;");
+      lastElement.getElementsByClassName("dot")[0].setAttribute("style", "background-color: white");
       var timeLine = document.getElementById("timeLine");
       var newEvent = document.createElement('div');
       newEvent.onclick = function() {oldVersion()};

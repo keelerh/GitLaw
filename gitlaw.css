@@ -14,7 +14,7 @@ body, html {
 
 .menuBar{
     position: relative;
-    width:97.5%;
+    width:100%;
     background-color: #bebebe;
     z-index: 10000;
 }
@@ -78,11 +78,17 @@ li a:active{
   position: absolute;
   top: 0;
   text-align: center;
-  background: rgba(29, 106, 154, 0.72);
-  color: #fff;
+  background-color:rgba(0,0,0,0.5);
+  color: white;
   cursor: pointer;
   visibility: hidden;
   opacity: 0;
+  border-radius: 6px; 
+  top: 50%;
+  margin-top: -.8em;
+  line-height: 1.5em;
+  font-size: .8em; 
+  vertical-align: middle;
 }
 
 .imgWrap:hover .user {
@@ -94,6 +100,7 @@ li a:active{
     overflow: hidden;
     width:97.5%;
     height: 90%;
+    margin-top: 9px;
 }
 
 .editor{
@@ -132,6 +139,14 @@ div {
     -moz-transition: all 1s ease;
     transition: all 1s ease;
 }
+
+.timeline .active.close .timestamp, .timeline .active.close .profile-pic {
+    color: #bebebe;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
 .timeline .timeline-item.close .timestamp, .timeline .timeline-item.close .profile-pic {
     color: #bebebe;
     -webkit-transition: all 1s ease;
@@ -139,27 +154,14 @@ div {
     transition: all 1s ease;
 }
 
-.timeline .timeline-item.active .info, .timeline .timeline-item:hover .timestamp {
-    color: #bebebe;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    transition: all 1s ease;
-}
 .timeline .timeline-item .profile-pic {
     position: absolute;
     margin: 3% 10% 0 12%;
     border-radius: 50%;
-    min-width: 50px;
-    min-height: 50px;
     width: 50px;
     height: 50px;
     border:1px solid #bebebe;
     cursor: pointer;
-}
-
-.timeline .timeline-item .profile-pic:hover {
-    width: 51px;
-    height: 51px;
 }
 .timeline .timeline-item .timestamp {
     color: black;
@@ -208,12 +210,9 @@ div {
     border-radius: 100px;
     background-color: #91DB98;
 }
+
 .timeline .timeline-item.active .marker .dot, .timeline .timeline-item:hover .marker .dot {
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    transition: all 1s ease;
     background-color: #6EBFAB;
-    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .popup {
@@ -322,7 +321,6 @@ a.popupButton {
     vertical-align: middle;
     outline: none;
 }
-
 
 .commentMode {
     cursor: text;
