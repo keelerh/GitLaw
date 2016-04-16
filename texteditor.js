@@ -1,7 +1,7 @@
 $(document).ready(function(){
-    document.getElementById('textEditor').contentWindow.document.designMode="on";
-    document.getElementById('textEditor').contentWindow.document.close();
-    var edit = document.getElementById("textEditor").contentWindow;
+    document.getElementById('TText').contentWindow.document.designMode="on";
+    document.getElementById('TText').contentWindow.document.close();
+    var edit = document.getElementById("TText").contentWindow;
     edit.focus();
     $("#bold").click(function(){
         if($(this).hasClass("selected")){
@@ -39,33 +39,33 @@ $(document).ready(function(){
     });
 });
 function boldIt(){
-    var edit = document.getElementById("textEditor").contentWindow;
+    var edit = document.getElementById("TText").contentWindow;
     edit.focus();
     edit.document.execCommand("bold", false, "");
     edit.focus();
 }
 function ItalicIt(){
-    var edit = document.getElementById("textEditor").contentWindow;
+    var edit = document.getElementById("TText").contentWindow;
     edit.focus();
     edit.document.execCommand("italic", false, "");
     edit.focus();
 }
 function changeFont(font){
-    var edit = document.getElementById("textEditor").contentWindow;
+    var edit = document.getElementById("TText").contentWindow;
     edit.focus();
     edit.document.execCommand("FontName", false, font);
     edit.focus();
 }
 function url(url){
-    var edit = document.getElementById("textEditor").contentWindow;
+    var edit = document.getElementById("TText").contentWindow;
     edit.focus();
     edit.document.execCommand("Createlink", false, url);
     edit.focus();
 }
 setInterval(function(){
-    var gyt=$("#textEditor").contents().find("body").html().match(/@/g);
-    if($("#textEditor").contents().find("body").html().match(/@/g)>=0){}else{
-        $("#text").val($("#textEditor").contents().find("body").html());
+    var gyt=$("#TText").contents().find("body").html().match(/@/g);
+    if($("#TText").contents().find("body").html().match(/@/g)>=0){}else{
+        $("#text").val($("#TText").contents().find("body").html());
     }
-    $("#text").val($("#textEditor").contents().find("body").html());
+    $("#text").val($("#TText").contents().find("body").html());
 },1000);

@@ -150,16 +150,13 @@ tinymce.init({
     'insertdatetime contextmenu paste code'
   ],
   toolbar: 'print | cut copy paste | insertfile undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent',
-  content_css: [
-    '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
-    '//www.tinymce.com/css/codepen.min.css'
-  ]
 });
 
 
 var lastElement = document.getElementById("5");
 
 function newVersionFunc() {
+      console.log(lastElement.getElementsByClassName("marker"));
       var timeLine = document.getElementById("timeLine");
       var newEvent = document.createElement('div');
       newEvent.onclick = function() {oldVersion()};

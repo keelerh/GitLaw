@@ -3,6 +3,7 @@ body, html {
     background-color: #eee;
     height:  100%;
     padding: 0px auto;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 #wrapper{
@@ -111,7 +112,6 @@ li a:active{
 
 
 div {
-    font-family: Helvetica, Arial, sans-serif;
     box-sizing: border-box;
 }
 .timeline {
@@ -132,28 +132,24 @@ div {
     margin: -2px;
 }
 .timeline .timeline-item .timestamp, .timeline .timeline-item .profile-pic {
-    color: #eee;
+    color: #bebebe;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     transition: all 1s ease;
 }
 .timeline .timeline-item.close .timestamp, .timeline .timeline-item.close .profile-pic {
-    color: #ccc;
+    color: #bebebe;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     transition: all 1s ease;
 }
 
 .timeline .timeline-item.active .info, .timeline .timeline-item:hover .timestamp {
-    color: #444;
+    color: #bebebe;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     transition: all 1s ease;
 }
-.timeline .timeline-item.active .profile-pic, .timeline .timeline-item:hover .profile-pic {
-    color: #9DB668;
-}
-
 .timeline .timeline-item .profile-pic {
     position: absolute;
     margin: 3% 10% 0 12%;
