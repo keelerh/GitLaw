@@ -60,11 +60,11 @@ li a:active{
     border-radius: 100%;
     width:45px;
     height: 45px;
-    cursor: pointer;
+    cursor:pointer;
 }
 
 .imgWrap {
-  position: relative;
+  position:relative;
 }
 
 .img-circle:hover{
@@ -105,9 +105,11 @@ li a:active{
 
 .editor{
     float: left;
+    padding-left: 15%;
     width: 74%;
+    min-width: 900px;
     height: auto;
-    background: white;
+    background-color: #eee;
     overflow: hidden;
 }
 
@@ -324,4 +326,114 @@ a.popupButton {
 
 .commentMode {
     cursor: text;
+}
+
+/*#myCanvas {
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    z-index:100;
+}*/
+
+.comment-box {
+    -webkit-box-shadow: -5px 5px 5px 0px rgba(207,207,207,1);
+    -moz-box-shadow: -5px 5px 5px 0px rgba(207,207,207,1);
+    box-shadow: -5px 5px 5px 0px rgba(207,207,207,1);
+    width:150px;
+    height:115px;
+    top:200px;
+    left:18px;
+    position:absolute;
+    background-color:white;
+    z-index:10000000000; /* just for you Raoul */
+    visibility: hidden;
+}
+
+.comment-box-button {
+    cursor: pointer;
+    width: 75px;
+    height: 25px;
+    float: left;
+    background-color: #384E77;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    position:relative;
+    bottom:-15px;
+    left:35px;
+    font-size:12px;
+}
+
+.comment-box-button:hover {
+    background-color: #6EBFAB;
+}
+
+#comment-text {
+    position: absolute;
+    top:20%;
+    left:15%;
+}
+
+.close-comment {
+    color: #bebebe;
+    float:right;
+    right:5px;
+    top:5px;
+    position:relative;
+    font-family: Arial, Helvetica, sans-serif;  
+    font-weight: bold;
+    cursor: pointer;
+}
+ 
+.comment-box .close-comment:hover {
+    color: gray;
+}
+
+.comment-input {
+    width:128px;
+    left:5px;
+    top:7px;
+    position:relative;
+}
+
+.comment-img {
+    top:5px;
+    left:5px;
+    width:35px;
+    height:35px;
+    border-radius:100%;
+    position:relative;
+    z-index: 100000000000000000; /* just for you Raoul! */
+}
+
+.finished-comment {
+    -webkit-box-shadow: -5px 5px 5px 0px rgba(207,207,207,1);
+    -moz-box-shadow: -5px 5px 5px 0px rgba(207,207,207,1);
+    box-shadow: -5px 5px 5px 0px rgba(207,207,207,1);
+    width:150px;
+    height:45px;
+    top:200px;
+    left:18px;
+    position:absolute;
+    background-color:white;
+    z-index:10000000000;
+    visibility: hidden;
+}
+
+.finished-comment-text {
+    font-size:12px;
+    float:left;
+    left:45px;
+    bottom:38px;
+    position:relative;
+}
+
+.comment-time {
+    color: gray;
+    font-size: 10px;
+    float:left;
+    left:45px;
+    top:-32px;
+    position:relative;
 }
