@@ -1,6 +1,5 @@
 // This allows the Javascript code inside this block to only run when the page
 // has finished loading in the browser.
-var car = {type:"Fiat", model:"500", color:"white"};
 
 var pHight = Math.floor(document.getElementById("timeLine").clientHeight * .94);
 var currentText = "";
@@ -15,13 +14,11 @@ function centerBox() {
     /* auto scroll bug */
     
     /* Calculate positions */
-    
     var disWidth = (winWidth - boxWidth) / 2
     var disHeight = scrollPos + 150;
     
     /* Move stuff about */
     $('.popup-box').css({'width' : boxWidth+'px', 'left' : disWidth+'px', 'top' : disHeight+'px'});
-    // $('#blackout').css({'width' : winWidth+'px', 'height' : winHeight+'px'});
   
     return false;
 }
@@ -38,6 +35,7 @@ var shareMode = false;
 function shareDoc() {
   document.getElementById("share").style.visibility = "visible";
   document.getElementById("wrapper").style.opacity = ".25";
+  $( "#name" ).focus();
   shareMode = true;
 }
 
@@ -78,32 +76,63 @@ function cancelShare() {
 }
 
 /* comment functions */
-var commentMode = false;
 function commentDoc() {
-  document.getElementById("comment").style.visibility = "visible";
-  document.getElementById("wrapper").style.opacity = ".25";
-  commentMode = true;
+  document.getElementById("comment-box").style.visibility = "visible";
+  $( "#comment-input" ).focus();
 }
 
 $('#close-comment').click(function () {
   cancelComment();
 });
 
-function confirmComment() {
-
+$('#comment-box-button').click(function () {
   cancelComment();
-  $(".editor").css("border", "3px solid red");
-  $("#TText").css("cursor", "crosshair");
-
-  $(".editor").click(function () {
-    $(".editor").css("border", "0");
-    $("#TText").css("cursor", "");
-  });
-}
+  document.getElementById('finished-comment').style.visibility = "visible";
+  var finishedComment = document.getElementById('finished-comment');
+  finishedComment.className = 'finished-comment';
+  var commentPic = document.createElement('div');
+  commentPic.innerHTML = "<img class='comment-img' src='images/jessica.jpg' />";
+  var time = document.createElement('div');
+  time.className = "comment-time";
+  var am = "am";
+  var today = new Date();
+  var min = today.getMinutes();
+  var hour = today.getHours();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1;
+  var yyyy = today.getFullYear();
+  if(dd<10) {
+      dd='0'+dd;
+  } 
+  if(mm<10) {
+      mm='0'+mm;
+  } 
+  if (min<10) {
+      min='0'+min;
+  }
+  if (hour>=12){
+    am = "pm"
+    if (hour > 12){
+      hour = hour-12
+    }
+  }
+  if (hour<10){
+    hour = '0' +hour;
+  }
+  today = hour+':'+min+' '+am+" "+mm+'/'+dd+'/'+yyyy;
+  time.innerHTML = today;
+  var text = document.createElement('div');
+  var userInput = document.getElementById('comment-input');
+  text.innerHTML = "<p>" + userInput.value.substring(0,15) + "..." + "</p>";
+  text.className = 'finished-comment-text';
+  finishedComment.appendChild(commentPic);
+  finishedComment.appendChild(time);
+  finishedComment.appendChild(text);
+  editor.appendChild(finishedComment);
+});
 
 function cancelComment() {
-  document.getElementById("comment").style.visibility = "hidden";
-  document.getElementById("wrapper").style.opacity = "1";
+  document.getElementById("comment-box").style.display = "none";
 }
 
 /* download function */
@@ -172,6 +201,7 @@ $(".timeline-item").click(function () {
 tinymce.init({
   selector: 'textarea',
   height: pHight,
+  width:700,
   statusbar: false,
   menubar: false,
   plugins: [
@@ -234,3 +264,25 @@ function newVersionFunc() {
 function oldVersion() {
   alert("Sorry, this function is not implemented yet! However, clicking this would take you back to a previous version of the document.");
 }
+
+// for comments
+// function relMouseCoords(event){
+//     var totalOffsetX = 0;
+//     var totalOffsetY = 0;
+//     var canvasX = 0;
+//     var canvasY = 0;
+//     var currentElement = this;
+
+//     do{
+//         totalOffsetX += currentElement.offsetLeft - currentElement.scrollLeft;
+//         totalOffsetY += currentElement.offsetTop - currentElement.scrollTop;
+//     }
+//     while(currentElement = currentElement.offsetParent)
+
+//       console.log(event.pageX)
+//     canvasX = event.pageX - totalOffsetX;
+//     canvasY = event.pageY - totalOffsetY;
+//     console.log(canvasY)
+
+//     return {x:canvasX, y:canvasY}
+// }

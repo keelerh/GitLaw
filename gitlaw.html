@@ -36,7 +36,7 @@
     <div id="wrapper">
   
       <div class="menuBar">
-        <ul id="menuItems">
+        <ul>
           <li onclick="commentDoc()"><a>Comment</a></li>
           <li onclick="shareDoc()"><a>Share</a></li>
           <li>
@@ -77,10 +77,23 @@
       </div>
   
       <div class="mainWrapper">
-      <div class="editor">
-        <textarea id = "TText">
+      <div class="editor" id="editor">
+<!--         <canvas id="myCanvas" onclick="relMouseCoords(event)"></canvas> -->
+        <div class="finished-comment" id="finished-comment">
+        </div>
+        <div class="comment-box" id="comment-box" onclick="commentDoc()">
+          <div class="close-comment" id="close-comment" onclick="cancelComment()">X</div>
+          <div>    
+            <form >
+              <img class="comment-img" src="images/jessica.jpg"/> <br>
+              <input type="text" class="comment-input" size="55" id="comment-input"> <br>
+                <div class="comment-box-button" id="comment-box-button"><div id="comment-text">Comment</div></div>
+            </form>
+          </div>
+        </div> 
+        <textarea id="TText">
           <p>
-            <p style="text-align: center;">
+            <p>
               A G R E E M E N T:
                   
               AGREEMENT made this 11th day of September, 2014, between W (“W"), (Social Security No. ), residing at ___________________ and A (“A"), (Social Security No. ), residing at ___________________; (sometimes W and A are referred to as the “Parties")
@@ -182,19 +195,7 @@
       </div>
     </div>
   
-    <div class="popup-box" id="comment">
-    <div class="close" id="close-comment">X</div>
-      <div class="top">
-        <h2>Add a Comment</h2>
-      </div>
-    <div class="bottom">    
-      <form >
-        <input type="text" id="comment_text" size="55"> <br>
-          <p class="italic">After clicking "Add Comment", click the section of text you wish to comment on</p>
-        <a class="popupButton" onClick="confirmComment()">Add Comment</a>
-      </form>
-    </div>
-    </div> 
+
     <div class="popup-box" id="share">
       <div class="close" id="close-share">X</div>
       <div class="top">
@@ -202,7 +203,7 @@
       </div>
       <div class="bottom">
           <p><h1>Name:  <input type="text" id="name"></h1></p>
-          <a class="popupButton" onClick="confirmShare()">Share</a>
+          <a class="popupButton" onclick="confirmShare()">Share</a>
       </div>
     </div>
     <div class="popup-box" id="upload">
