@@ -53,10 +53,12 @@ var i = 0;
 function confirmShare() {
   if (i < 5) {
     var name = document.getElementById('name');
+    console.log(name);
     document.getElementById("share").style.visibility = "hidden";
-    var list = document.getElementById('menuItems');
+    var list = document.getElementById('pictures');
     var entry = document.createElement('li');
     var circle = document.createElement('div');
+    console.log(list);
     circle.className = 'imgWrap';
     circle.innerHTML = newCollaborators[i] + name.value + "</p>";
     entry.appendChild(circle);
@@ -69,6 +71,7 @@ function confirmShare() {
 function cancelShare() {
   var scrollPos = $(window).scrollTop();
   document.getElementById("share").style.visibility = "hidden";
+  document.getElementById("name").value = "";
   document.getElementById("wrapper").style.opacity = "1";
   $("html,body").css("overflow","auto");
   $('html').scrollTop(scrollPos);
@@ -137,7 +140,7 @@ function cancelComment() {
 
 /* download function */
 function downloadDoc() {
-  //TODO
+  console.debug(tinyMCE.activeEditor.getContent({format:'text'}));
 }
 
 /* upload functions */
