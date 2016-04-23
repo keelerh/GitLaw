@@ -328,14 +328,6 @@ a.popupButton {
     cursor: text;
 }
 
-/*#myCanvas {
-    position:absolute;
-    top:0;
-    left:0;
-    height:100%;
-    z-index:100;
-}*/
-
 .comment-box {
     -webkit-box-shadow: -5px 5px 5px 0px rgba(207,207,207,1);
     -moz-box-shadow: -5px 5px 5px 0px rgba(207,207,207,1);
@@ -348,6 +340,7 @@ a.popupButton {
     background-color:white;
     z-index:10000000000; /* just for you Raoul */
     visibility: hidden;
+    cursor:pointer;
 }
 
 .comment-box-button {
@@ -438,20 +431,11 @@ a.popupButton {
     position:relative;
 }
 
-.box {
-    position:absolute;
-    top:15px;
+#bounding-box {
+    top:75px;
     left:0px;
-    height:100px;
-    width:40px;
-    border:solid;
-    border-color:red;
-    z-index:100000000000000000;
-}
-
-.drag {
-    position: absolute;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
+    bottom:-75px;
+    height:540px;
+    width:150px;
+    position:absolute;
 }

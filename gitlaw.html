@@ -79,13 +79,11 @@
   
       <div class="mainWrapper">
       <div class="editor" id="editor">
-<!--         <canvas id="myCanvas" onclick="relMouseCoords(event)"></canvas> -->
-        <!-- bound box on left side for comments -->
-        <div id="box" class="bound">
-<!--         after clicking comment the condensed version -->
+        <div id="bounding-box">
+<!-- after clicking comment the condensed version -->
           <div class="finished-comment" id="finished-comment">
-<!--           the entire box with prof pic and where you can commit and cancel or comment -->
-            <div class="comment-box drag" id="comment-box" onclick="commentDoc()">
+<!-- the entire box with prof pic and where you can commit and cancel or comment -->
+            <div class="comment-box" id="comment-box" onclick="commentDoc()">
             <div class="close-comment" id="close-comment" onclick="cancelComment()">X</div>
             <div>    
                 <form >
@@ -157,7 +155,7 @@
       <div class="timeline" id="timeLine">
         <div class="timeline-item active" onclick="oldVersion()" id="5">
           <div>
-            <img class="profile-pic" src="http://images.huffingtonpost.com/2016-03-07-1457372468-7442274-trump.jpg" />
+            <img class="profile-pic" src="images/trump.jpg" />
             <span class="marker"><span class="dot"></span></span>
           </div>
           <div class="timestamp">10:15 am  02/04/2016</div>

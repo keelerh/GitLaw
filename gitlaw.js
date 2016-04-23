@@ -269,102 +269,16 @@ function oldVersion() {
 }
 
 // for dragging the comment box
-
-var dragObj;
-
-function down(event) {
-    if(~event.target.className.search(/drag/)) {
-        dragObj = makeObj(event);
-        dragObj.element.style.zIndex="100000000000";
-        document.addEventListener("mousemove", freeMovement, false);
-    }
-}
-
-function freeMovement(event) {
-    //Prevents redundantly adding the same event handler repeatedly
-    if (typeof(dragObj.element.mouseup) == "undefined")
-        document.addEventListener("mouseup", drop, false);
-    
-    dragObj.element.style.left = Math.max(dragObj.minBoundX, Math.min(event.clientX - dragObj.posX, dragObj.maxBoundX)) + "px";
-    dragObj.element.style.top = Math.max(dragObj.minBoundY, Math.min(event.clientY - dragObj.posY, dragObj.maxBoundY)) + "px";
-}
-
-function drop() {
-    dragObj.element.style.zIndex="1";
-
-    document.removeEventListener("mousemove", freeMovement, false);
-    document.removeEventListener("mouseup", drop, false);
-}
-
-function makeBoundlessObj(e) {
-    var obj = new Object();
-    obj.element = e;
-
-    obj.boundX = e.parentNode.offsetWidth - e.offsetWidth;
-    obj.boundY = e.parentNode.offsetHeight - e.offsetHeight;
-
-    obj.posX = event.clientX - e.offsetLeft;
-    obj.posY = event.clientY - e.offsetTop;
-
-    return obj;
-}
-
-function makeObj(event) {
-    var obj = new Object(),
-    e = event.target; // just make it shorter because we use it everywhere
-    
-    obj.element = e;
-
-    // parentNode is our bounding box
-    // the minimum boundary is based on the top left corner of our container
-    obj.minBoundX = e.parentNode.offsetLeft;
-    obj.minBoundY = e.parentNode.offsetTop;
-    
-    // the maximum is the bottom right corner of the container
-    // or.. the top left (x,y) + the height and width (h,y) - the size of the square
-    obj.maxBoundX = obj.minBoundX + e.parentNode.offsetWidth - e.offsetWidth;
-    obj.maxBoundY = obj.minBoundY + e.parentNode.offsetHeight - e.offsetHeight;
-    
-
-    obj.posX = event.clientX - e.offsetLeft;
-    obj.posY = event.clientY - e.offsetTop;
-    
-    setHelperBoxPos(obj);
-
-    return obj;
-}
-
-function setHelperBoxPos(obj) {
-    var minBox = document.getElementById('min');
-    minBox.style.left = obj.minBoundX + 'px';
-    minBox.style.top = obj.minBoundY + 'px';
-    
-    var maxBox = document.getElementById('max');
-    maxBox.style.left = obj.maxBoundX + 'px';
-    maxBox.style.top = obj.maxBoundY + 'px';
-}
-
-document.addEventListener("mousedown", down, false);
-
-
-// for comments
-// function relMouseCoords(event){
-//     var totalOffsetX = 0;
-//     var totalOffsetY = 0;
-//     var canvasX = 0;
-//     var canvasY = 0;
-//     var currentElement = this;
-
-//     do{
-//         totalOffsetX += currentElement.offsetLeft - currentElement.scrollLeft;
-//         totalOffsetY += currentElement.offsetTop - currentElement.scrollTop;
-//     }
-//     while(currentElement = currentElement.offsetParent)
-
-//       console.log(event.pageX)
-//     canvasX = event.pageX - totalOffsetX;
-//     canvasY = event.pageY - totalOffsetY;
-//     console.log(canvasY)
-
-//     return {x:canvasX, y:canvasY}
-// }
+$(function() {
+    $( "#comment-box" ).draggable({ containment: "#bounding-box",
+                                    scroll: false,
+                                    axis: "y"});
+    $( "#bounding-box" ).droppable({
+      // drop: function( event, ui ) {
+      //   $( this )
+      //     .addClass( "ui-state-highlight" )
+      //     .find( "p" )
+      //       .html( "Dropped!" );
+      // }
+    });
+  });
