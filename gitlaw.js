@@ -31,16 +31,20 @@ centerBox();
 /* Menu Bar Functions */
 
 /* share functions */
-var shareMode = false;
 function shareDoc() {
   document.getElementById("share").style.visibility = "visible";
   document.getElementById("wrapper").style.opacity = ".25";
   $( "#name" ).focus();
-  shareMode = true;
 }
 
 $('#close-share').click(function () {
   cancelShare();
+});
+
+$('#share').keyup(function(event){
+  if(event.keyCode == 13){
+    confirmShare();
+  }
 });
 
 var newCollaborators = ["<img class='img-circle' src='images/mitch.jpg' /> <p class='user'>",
@@ -51,14 +55,16 @@ var newCollaborators = ["<img class='img-circle' src='images/mitch.jpg' /> <p cl
 var i = 0;
 
 function confirmShare() {
+  var name = document.getElementById('name');
+  if (name.value == '') {
+    alert("Please enter a name");
+    return;
+  }
   if (i < 5) {
-    var name = document.getElementById('name');
-    console.log(name);
     document.getElementById("share").style.visibility = "hidden";
     var list = document.getElementById('pictures');
     var entry = document.createElement('li');
     var circle = document.createElement('div');
-    console.log(list);
     circle.className = 'imgWrap';
     circle.innerHTML = newCollaborators[i] + name.value + "</p>";
     entry.appendChild(circle);
@@ -75,7 +81,6 @@ function cancelShare() {
   document.getElementById("wrapper").style.opacity = "1";
   $("html,body").css("overflow","auto");
   $('html').scrollTop(scrollPos);
-  shareMode = false;
 }
 
 /* comment functions */
@@ -187,6 +192,8 @@ function cancelUpload() {
   document.getElementById("wrapper").style.opacity = "1";
 }
 
+
+/* Timeline Functions */
 $(".timeline-item").hover(function () {
     $(".timeline-item").removeClass("active");
     $(this).toggleClass("active");
