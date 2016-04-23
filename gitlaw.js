@@ -31,16 +31,20 @@ centerBox();
 /* Menu Bar Functions */
 
 /* share functions */
-var shareMode = false;
 function shareDoc() {
   document.getElementById("share").style.visibility = "visible";
   document.getElementById("wrapper").style.opacity = ".25";
   $( "#name" ).focus();
-  shareMode = true;
 }
 
 $('#close-share').click(function () {
   cancelShare();
+});
+
+$('#share').keyup(function(event){
+  if(event.keyCode == 13){
+    confirmShare();
+  }
 });
 
 var newCollaborators = ["<img class='img-circle' src='images/mitch.jpg' /> <p class='user'>",
@@ -51,14 +55,16 @@ var newCollaborators = ["<img class='img-circle' src='images/mitch.jpg' /> <p cl
 var i = 0;
 
 function confirmShare() {
+  var name = document.getElementById('name');
+  if (name.value == '') {
+    alert("Please enter a name");
+    return;
+  }
   if (i < 5) {
-    var name = document.getElementById('name');
-    console.log(name);
     document.getElementById("share").style.visibility = "hidden";
     var list = document.getElementById('pictures');
     var entry = document.createElement('li');
     var circle = document.createElement('div');
-    console.log(list);
     circle.className = 'imgWrap';
     circle.innerHTML = newCollaborators[i] + name.value + "</p>";
     entry.appendChild(circle);
@@ -75,7 +81,6 @@ function cancelShare() {
   document.getElementById("wrapper").style.opacity = "1";
   $("html,body").css("overflow","auto");
   $('html').scrollTop(scrollPos);
-  shareMode = false;
 }
 
 /* comment functions */
@@ -187,6 +192,8 @@ function cancelUpload() {
   document.getElementById("wrapper").style.opacity = "1";
 }
 
+
+/* Timeline Functions */
 $(".timeline-item").hover(function () {
     $(".timeline-item").removeClass("active");
     $(this).toggleClass("active");
@@ -277,7 +284,6 @@ function oldVersion(number) {
 }
 
 // for dragging the comment box
-
 var dragObj;
 
 function down(event) {
@@ -394,19 +400,3 @@ Versions.push("Hello World <br> The Quick Brown Fox Jumped Over The Lazy Dog <br
 Versions.push("<p>John Smith, hereinafter referred to as Prospective Husband, and Sally Wilson, hereinafter referred to as Prospective Wife, hereby agree on this 3rd day of April, in the year 2016, as follows:</p><ol><li>Prospective Husband and Prospective Wife contemplate marriage in the near future and wish to establish their respective rights and responsibilities regarding each other's income and property and the income and property that may be acquired, either separately or together, during the marriage.</li><li>Prospective Husband and Prospective Wife have made a full and complete disclosure to each other of all of their financial assets and liabilities, as more fully set forth in the accompanying Financial Statements.</li><li>Exhibits A and B. Except as otherwise provided below, Prospective Husband and Prospective Wife waive the following rights:<ol><li>To share in each other's estates upon their death.</li><li>To spousal maintenance, both temporary and permanent.</li><li>To share in the increase in value during the marriage of the separate property of the parties.</li><li>To share in the pension, profit sharing, or other retirement accounts of the other.</li><li>To the division of the separate property of the parties, whether currently held or hereafter acquired.</li><li>To any claims based on the period of cohabitation of the parties.</li></ol></li><li>Both Prospective Husband and Prospective Wife are represented by separate and independent legal counsel of their own choosing.</li><li>Both Prospective Husband and Prospective Wife have separate income and assets to independently provide for their own respective financial needs.</li><li>This agreement constitutes the entire agreement of the parties and may be modified only in a writing executed by both Prospective Husband and Prospective Wife.</li><li>In the event it is determined that a provision of this agreement is invalid because it is contrary to applicable law, that provision is deemed separable from the rest of the agreement, such that the remainder of the agreement remains valid and enforceable.</li><li>This agreement is made in accordance with the laws of the state of Massachuseets, and any dispute regarding its enforcement will be resolved by reference to the laws of that state.</li><li>This agreement will take effect immediately upon the solemnization of the parties' marriage.</li></ol><p>&nbsp;</p><p>I HAVE READ THE ABOVE AGREEMENT, I HAVE TAKEN TIME TO CONSIDER ITS IMPLICATIONS, I FULLY UNDERSTAND ITS CONTENTS, I AGREE TO ITS TERMS, AND I VOLUNTARILY SUBMIT TO ITS EXECUTION. John Smith Prospective Husband Sally Wilson Prospective Wife</p>");
 var OriginalText = null;
 var onOriginal = true;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

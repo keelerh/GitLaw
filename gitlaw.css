@@ -56,20 +56,15 @@ li a:active{
     overflow:auto;
 }
 
+.imgWrap {
+  position:relative;
+  cursor: default;
+}
+
 .img-circle {
     border-radius: 100%;
     width:45px;
     height: 45px;
-    cursor:pointer;
-}
-
-.imgWrap {
-  position:relative;
-}
-
-.img-circle:hover{
-    position:relative;
-    top:1px;
 }
 
 .user {
@@ -80,7 +75,6 @@ li a:active{
   text-align: center;
   background-color:rgba(0,0,0,0.5);
   color: white;
-  cursor: pointer;
   visibility: hidden;
   opacity: 0;
   border-radius: 6px; 
@@ -112,7 +106,6 @@ li a:active{
     background-color: #eee;
     overflow: hidden;
 }
-
 
 div {
     box-sizing: border-box;
@@ -257,7 +250,7 @@ div {
 .popup-box .bottom {
     background: #eee;
     border-top: 1px solid #e5e5e5;
-    padding: 20px;
+    padding: 10px 20px 20px 20px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -290,6 +283,11 @@ div {
     font-size: 18px;
 }
 
+.popup-box h3 {
+    color: black;
+    font-size: 14px;
+}
+
 
 input[type="text"] {
     font-family: Arial, Helvetica, sans-serif;
@@ -298,43 +296,27 @@ input[type="text"] {
 }
 
 a.popupButton {
-    -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-    -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-    box-shadow:inset 0px 1px 0px 0px #ffffff;
-    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #e9e9e9));
-    background:-moz-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-    background:-webkit-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-    background:-o-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-    background:-ms-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-    background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9',GradientType=0);
-    background-color:#f9f9f9;
-    -moz-border-radius:6px;
-    -webkit-border-radius:6px;
-    border-radius:6px;
-    border:1px solid #888;
     display:inline-block;
-    cursor:pointer;
-    text-shadow:0px 1px 0px #ffffff;
     width: auto;
     padding: 3px;
     padding-bottom: 0px;
-    height: 20px;
     vertical-align: middle;
     outline: none;
+    width: 75px;
+    height: 20px;
+    background-color: #384E77;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+a.popupButton:hover {
+    background-color: #6EBFAB;
 }
 
 .commentMode {
     cursor: text;
 }
-
-/*#myCanvas {
-    position:absolute;
-    top:0;
-    left:0;
-    height:100%;
-    z-index:100;
-}*/
 
 .comment-box {
     -webkit-box-shadow: -5px 5px 5px 0px rgba(207,207,207,1);
@@ -348,6 +330,7 @@ a.popupButton {
     background-color:white;
     z-index:10000000000; /* just for you Raoul */
     visibility: hidden;
+    cursor:pointer;
 }
 
 .comment-box-button {
@@ -438,20 +421,11 @@ a.popupButton {
     position:relative;
 }
 
-.box {
-    position:absolute;
-    top:15px;
+#bounding-box {
+    top:75px;
     left:0px;
-    height:100px;
-    width:40px;
-    border:solid;
-    border-color:red;
-    z-index:100000000000000000;
-}
-
-.drag {
-    position: absolute;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
+    bottom:-75px;
+    height:540px;
+    width:150px;
+    position:absolute;
 }
