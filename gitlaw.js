@@ -212,7 +212,7 @@ tinymce.init({
     'searchreplace visualblocks fullscreen',
     'insertdatetime contextmenu paste code'
   ],
-  toolbar: 'print | cut copy paste | insertfile undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent',
+  toolbar: 'print | cut copy paste | insertfile undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist',
 });
 
 
