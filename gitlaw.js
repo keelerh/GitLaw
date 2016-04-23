@@ -209,7 +209,8 @@ $(".timeline-item").click(function () {
 });
 
 tinymce.init({
-  selector: 'textarea',
+  selector: '#myTextArea',
+  theme: 'modern',
   height: pHight,
   width:700,
   statusbar: false,
@@ -224,12 +225,13 @@ tinymce.init({
 
 
 var lastElement = document.getElementById("5");
-
+var numberToGive = 6;
 function newVersionFunc() {
+      var newNum = numberToGive
       lastElement.getElementsByClassName("dot")[0].setAttribute("style", "background-color: white");
       var timeLine = document.getElementById("timeLine");
       var newEvent = document.createElement('div');
-      newEvent.onclick = function() {oldVersion()};
+      newEvent.onclick = function() {oldVersion(newNum)};
       newEvent.className = "timeline-item active";
       var pic = document.createElement('div');
       pic.innerHTML = "<img class='profile-pic' src='images/jessica.jpg' /><span class='marker'><span class='dot'></span></span>"
@@ -269,23 +271,132 @@ function newVersionFunc() {
       newEvent.appendChild(time);
       timeLine.insertBefore(newEvent,lastElement);
       lastElement = newEvent;
+      numberToGive += 1;
 }
 
-function oldVersion() {
-  alert("Sorry, this function is not implemented yet! However, clicking this would take you back to a previous version of the document.");
+function oldVersion(number) {
+  if (onOriginal){
+    OriginalText = tinyMCE.activeEditor.getContent();
+    console.log(OriginalText);
+  }
+  tinyMCE.activeEditor.setContent(Versions[number]);
+  onOriginal = false;
 }
 
 // for dragging the comment box
-$(function() {
-    $( "#comment-box" ).draggable({ containment: "#bounding-box",
-                                    scroll: false,
-                                    axis: "y"});
-    $( "#bounding-box" ).droppable({
-      // drop: function( event, ui ) {
-      //   $( this )
-      //     .addClass( "ui-state-highlight" )
-      //     .find( "p" )
-      //       .html( "Dropped!" );
-      // }
-    });
-  });
+var dragObj;
+
+function down(event) {
+    if(~event.target.className.search(/drag/)) {
+        dragObj = makeObj(event);
+        dragObj.element.style.zIndex="100000000000";
+        document.addEventListener("mousemove", freeMovement, false);
+    }
+}
+
+function freeMovement(event) {
+    //Prevents redundantly adding the same event handler repeatedly
+    if (typeof(dragObj.element.mouseup) == "undefined")
+        document.addEventListener("mouseup", drop, false);
+    
+    dragObj.element.style.left = Math.max(dragObj.minBoundX, Math.min(event.clientX - dragObj.posX, dragObj.maxBoundX)) + "px";
+    dragObj.element.style.top = Math.max(dragObj.minBoundY, Math.min(event.clientY - dragObj.posY, dragObj.maxBoundY)) + "px";
+}
+
+function drop() {
+    dragObj.element.style.zIndex="1";
+
+    document.removeEventListener("mousemove", freeMovement, false);
+    document.removeEventListener("mouseup", drop, false);
+}
+
+function makeBoundlessObj(e) {
+    var obj = new Object();
+    obj.element = e;
+
+    obj.boundX = e.parentNode.offsetWidth - e.offsetWidth;
+    obj.boundY = e.parentNode.offsetHeight - e.offsetHeight;
+
+    obj.posX = event.clientX - e.offsetLeft;
+    obj.posY = event.clientY - e.offsetTop;
+
+    return obj;
+}
+
+function makeObj(event) {
+    var obj = new Object(),
+    e = event.target; // just make it shorter because we use it everywhere
+    
+    obj.element = e;
+
+    // parentNode is our bounding box
+    // the minimum boundary is based on the top left corner of our container
+    obj.minBoundX = e.parentNode.offsetLeft;
+    obj.minBoundY = e.parentNode.offsetTop;
+    
+    // the maximum is the bottom right corner of the container
+    // or.. the top left (x,y) + the height and width (h,y) - the size of the square
+    obj.maxBoundX = obj.minBoundX + e.parentNode.offsetWidth - e.offsetWidth;
+    obj.maxBoundY = obj.minBoundY + e.parentNode.offsetHeight - e.offsetHeight;
+    
+
+    obj.posX = event.clientX - e.offsetLeft;
+    obj.posY = event.clientY - e.offsetTop;
+    
+    setHelperBoxPos(obj);
+
+    return obj;
+}
+
+function setHelperBoxPos(obj) {
+    var minBox = document.getElementById('min');
+    minBox.style.left = obj.minBoundX + 'px';
+    minBox.style.top = obj.minBoundY + 'px';
+    
+    var maxBox = document.getElementById('max');
+    maxBox.style.left = obj.maxBoundX + 'px';
+    maxBox.style.top = obj.maxBoundY + 'px';
+}
+
+document.addEventListener("mousedown", down, false);
+
+// for comments
+// function relMouseCoords(event){
+//     var totalOffsetX = 0;
+//     var totalOffsetY = 0;
+//     var canvasX = 0;
+//     var canvasY = 0;
+//     var currentElement = this;
+
+//     do{
+//         totalOffsetX += currentElement.offsetLeft - currentElement.scrollLeft;
+//         totalOffsetY += currentElement.offsetTop - currentElement.scrollTop;
+//     }
+//     while(currentElement = currentElement.offsetParent)
+
+//       console.log(event.pageX)
+//     canvasX = event.pageX - totalOffsetX;
+//     canvasY = event.pageY - totalOffsetY;
+//     console.log(canvasY)
+
+//     return {x:canvasX, y:canvasY}
+// }
+
+
+
+// Bellow This will be the previous documents and other stuff I am using Dont Mess With it Bro
+var Versions = new Array();
+//First Version:
+Versions.push("<p><span style='background-color:#98ff98;'>John Smith, hereinafter referred to as Prospective Husband, and Sally Wilson, hereinafter referred to as Prospective Wife, hereby agree on this 3rd day of April, in the year 2016, as follows:</span></p><ol><li><span style='background-color:#98ff98;'>Prospective Husband and Prospective Wife contemplate marriage in the near future and wish to establish their respective rights and responsibilities regarding each other's income and property and the income and property that may be acquired, either separately or together, during the marriage.</span></li><li><span style='background-color:#98ff98;'>Prospective Husband and Prospective Wife have made a full and complete disclosure to each other of all of their financial assets and liabilities, as more fully set forth in the accompanying Financial Statements.</span></li><li><span style='background-color:#98ff98;'>Exhibits A and B. Except as otherwise provided below, Prospective Husband and Prospective Wife waive the following rights:</span><ol><li><span style='background-color:#98ff98;'>To share in each other's estates upon their death.</span></li><li><span style='background-color:#98ff98;'>To spousal maintenance, both temporary and permanent.</span></li><li><span style='background-color:#98ff98;'>To share in the increase in value during the marriage of the separate property of the parties.</span</li><li><span style='background-color:#98ff98;'>To share in the pension, profit sharing, or other retirement accounts of the other.</span></li><li><span style='background-color:#98ff98;'>To the division of the separate property of the parties, whether currently held or hereafter acquired.</span></li><li><span style='background-color:#98ff98;'>To any claims based on the period of cohabitation of the parties.</span></li></ol></li><li><span style='background-color:#98ff98;'>Both Prospective Husband and Prospective Wife are represented by separate and independent legal counsel of their own choosing.</span></li><li><span style='background-color:#98ff98;'>Both Prospective Husband and Prospective Wife have separate income and assets to independently provide for their own respective financial needs.</span></li><li><span style='background-color:#98ff98;'>This agreement constitutes the entire agreement of the parties and may be modified only in a writing executed by both Prospective Husband and Prospective Wife.</span></li><li><span style='background-color:#98ff98;'>In the event it is determined that a provision of this agreement is invalid because it is contrary to applicable law, that provision is deemed separable from the rest of the agreement, such that the remainder of the agreement remains valid and enforceable.</span></li><li><span style='background-color:#98ff98;'>This agreement is made in accordance with the laws of the state of Massachuseets, and any dispute regarding its enforcement will be resolved by reference to the laws of that state.</span></li><li><span style='background-color:#98ff98;'>This agreement will take effect immediately upon the solemnization of the parties' marriage.</span></li></ol><p><span style='background-color:#98ff98;'>&nbsp;</span></p><p><span style='background-color:#98ff98;'>I HAVE READ THE ABOVE AGREEMENT, I HAVE TAKEN TIME TO CONSIDER ITS IMPLICATIONS, I FULLY UNDERSTAND ITS CONTENTS, I AGREE TO ITS TERMS, AND I VOLUNTARILY SUBMIT TO ITS EXECUTION. John Smith Prospective Husband Sally Wilson Prospective Wife</span></p>");
+//Second Version:
+Versions.push("Hello World <span style='background-color:#98ff98;'> <br>The Quick Brown Fox Jumped Over The Lazy Dog <br>You Know the Quick Brown Fox That Jumped Over The Lazy Dog <br>Yes I Know Of His HE is Very Cool!<br></span>");
+//Third Version:
+Versions.push("Hello World <br> The Quick Brown Fox Jumped Over The Lazy Dog <br> <span style='background-color:#98ff98;'> You Know the Quick Brown Fox That Jumped Over The Lazy Dog <br> Yes I Know Of His HE is Very Cool!<br></span>");
+//Fourth Version:
+Versions.push("Hello World <br> The Quick Brown Fox Jumped Over The Lazy Dog <br> You Know the Quick Brown Fox That Jumped Over The Lazy Dog <br> <span style='background-color:#98ff98;'> Yes I Know Of His HE is Very Cool!<br></span>");
+//Fifth Version:
+Versions.push("Hello World <br> The Quick Brown Fox Jumped Over The Lazy Dog <br> You Know the Quick Brown Fox That Jumped Over The Lazy Dog <br>Yes I Know Of His <span style='background-color:#98ff98;'>HE is Very Cool!<br></span>");
+//Sixth Version:
+Versions.push("<p>John Smith, hereinafter referred to as Prospective Husband, and Sally Wilson, hereinafter referred to as Prospective Wife, hereby agree on this 3rd day of April, in the year 2016, as follows:</p><ol><li>Prospective Husband and Prospective Wife contemplate marriage in the near future and wish to establish their respective rights and responsibilities regarding each other's income and property and the income and property that may be acquired, either separately or together, during the marriage.</li><li>Prospective Husband and Prospective Wife have made a full and complete disclosure to each other of all of their financial assets and liabilities, as more fully set forth in the accompanying Financial Statements.</li><li>Exhibits A and B. Except as otherwise provided below, Prospective Husband and Prospective Wife waive the following rights:<ol><li>To share in each other's estates upon their death.</li><li>To spousal maintenance, both temporary and permanent.</li><li>To share in the increase in value during the marriage of the separate property of the parties.</li><li>To share in the pension, profit sharing, or other retirement accounts of the other.</li><li>To the division of the separate property of the parties, whether currently held or hereafter acquired.</li><li>To any claims based on the period of cohabitation of the parties.</li></ol></li><li>Both Prospective Husband and Prospective Wife are represented by separate and independent legal counsel of their own choosing.</li><li>Both Prospective Husband and Prospective Wife have separate income and assets to independently provide for their own respective financial needs.</li><li>This agreement constitutes the entire agreement of the parties and may be modified only in a writing executed by both Prospective Husband and Prospective Wife.</li><li>In the event it is determined that a provision of this agreement is invalid because it is contrary to applicable law, that provision is deemed separable from the rest of the agreement, such that the remainder of the agreement remains valid and enforceable.</li><li>This agreement is made in accordance with the laws of the state of Massachuseets, and any dispute regarding its enforcement will be resolved by reference to the laws of that state.</li><li>This agreement will take effect immediately upon the solemnization of the parties' marriage.</li></ol><p>&nbsp;</p><p>I HAVE READ THE ABOVE AGREEMENT, I HAVE TAKEN TIME TO CONSIDER ITS IMPLICATIONS, I FULLY UNDERSTAND ITS CONTENTS, I AGREE TO ITS TERMS, AND I VOLUNTARILY SUBMIT TO ITS EXECUTION. John Smith Prospective Husband Sally Wilson Prospective Wife</p>");
+var OriginalText = null;
+var onOriginal = true;

@@ -78,124 +78,96 @@
       </div>
   
       <div class="mainWrapper">
-      <div class="editor" id="editor">
-        <div id="bounding-box">
-<!-- after clicking comment the condensed version -->
-          <div class="finished-comment" id="finished-comment">
-<!-- the entire box with prof pic and where you can commit and cancel or comment -->
-            <div class="comment-box" id="comment-box" onclick="commentDoc()">
-            <div class="close-comment" id="close-comment" onclick="cancelComment()">X</div>
-            <div>    
-                <form >
-                  <img class="comment-img" src="images/jessica.jpg"/> <br>
-                  <input type="text" class="comment-input" size="55" id="comment-input"> <br>
-                  <div class="comment-box-button" id="comment-box-button"><div id="comment-text">Comment</div></div>
-                </form>
+        <div class="editor" id="editor">
+<!--         <canvas id="myCanvas" onclick="relMouseCoords(event)"></canvas> -->
+        <!-- bound box on left side for comments -->
+        <div id="box" class="bound">
+<!--         after clicking comment the condensed version -->
+            <div class="finished-comment" id="finished-comment">
+  <!--           the entire box with prof pic and where you can commit and cancel or comment -->
+              <div class="comment-box drag" id="comment-box" onclick="commentDoc()">
+                <div class="close-comment" id="close-comment" onclick="cancelComment()">X</div>
+                  <div>    
+                      <form >
+                        <img class="comment-img" src="images/jessica.jpg"/> <br>
+                        <input type="text" class="comment-input" size="55" id="comment-input"> <br>
+                        <div class="comment-box-button" id="comment-box-button"><div id="comment-text">Comment</div></div>
+                      </form>
+                  </div>
+                </div> 
+              </div>
             </div>
-            </div> 
-          </div>
+          <textarea id='myTextArea'>
+<p>John Smith, hereinafter referred to as Prospective Husband, and Sally Wilson, hereinafter referred to as Prospective Wife, hereby agree on this 3rd day of April, in the year 2016, as follows:</p>
+<ol>
+<li>Prospective Husband and Prospective Wife contemplate marriage in the near future and wish to establish their respective rights and responsibilities regarding each other's income and property and the income and property that may be acquired, either separately or together, during the marriage.</li>
+<li>Prospective Husband and Prospective Wife have made a full and complete disclosure to each other of all of their financial assets and liabilities, as more fully set forth in the accompanying Financial Statements.</li>
+<li>Exhibits A and B. Except as otherwise provided below, Prospective Husband and Prospective Wife waive the following rights:
+<ol>
+<li>To share in each other's estates upon their death.</li>
+<li>To spousal maintenance, both temporary and permanent.</li>
+<li>To share in the increase in value during the marriage of the separate property of the parties.</li>
+<li>To share in the pension, profit sharing, or other retirement accounts of the other.</li>
+<li>To the division of the separate property of the parties, whether currently held or hereafter acquired.</li>
+<li>To any claims based on the period of cohabitation of the parties.</li>
+</ol>
+</li>
+<li>Both Prospective Husband and Prospective Wife are represented by separate and independent legal counsel of their own choosing.</li>
+<li>Both Prospective Husband and Prospective Wife have separate income and assets to independently provide for their own respective financial needs.</li>
+<li>This agreement constitutes the entire agreement of the parties and may be modified only in a writing executed by both Prospective Husband and Prospective Wife.</li>
+<li>In the event it is determined that a provision of this agreement is invalid because it is contrary to applicable law, that provision is deemed separable from the rest of the agreement, such that the remainder of the agreement remains valid and enforceable.</li>
+<li>This agreement is made in accordance with the laws of the state of Massachuseets, and any dispute regarding its enforcement will be resolved by reference to the laws of that state.</li>
+<li>This agreement will take effect immediately upon the solemnization of the parties' marriage.</li>
+</ol>
+<p>&nbsp;</p>
+<p>I HAVE READ THE ABOVE AGREEMENT, I HAVE TAKEN TIME TO CONSIDER ITS IMPLICATIONS, I FULLY UNDERSTAND ITS CONTENTS, I AGREE TO ITS TERMS, AND I VOLUNTARILY SUBMIT TO ITS EXECUTION. John Smith Prospective Husband Sally Wilson Prospective Wife</p>
+          </textarea>
         </div>
-        <textarea id="TText">
-          <p>
-            <p>
-              A G R E E M E N T:
-                  
-              AGREEMENT made this 11th day of September, 2014, between W (“W"), (Social Security No. ), residing at ___________________ and A (“A"), (Social Security No. ), residing at ___________________; (sometimes W and A are referred to as the “Parties")
-            </p>
-            <p>
-              W I T N E S E T H:
-                    
-              WHEREAS, a marriage is contemplated by W and A; and
-                    
-              WHEREAS, the Parties wish to define and determine their respective rights and obligations with respect to his or her own property and in the property of the other in the event of a dissolution of their marriage regardless of whether their property rights are to be governed by the laws of the State of New York or any other domestic or foreign jurisdiction; and.
-                    
-              WHEREAS, the Parties, to the extent as set forth herein, wish to relinquish any and all rights that either of them may have in the other's separate property as specifically set forth and defined herein, whether acquired prior or subsequent to the marriage; and
-                    
-              WHEREAS the Parties hereto have had the opportunity to fully, separately and independently be apprised and advised of their respective legal rights, remedies, privileges and obligations that but for this Agreement, will arise out of the marital relationship or otherwise, by counsel of their own choice and selection; and
-                    
-              WHEREAS, the Parties each warrant and represent to the other that they and each of them, fully understand all the terms, covenants, conditions, provisions and obligations incumbent upon each of them by virtue of this Agreement to be performed or contemplated by each of them hereunder, and each believes the same to be fair, just, reasonable and to his or her respective best interests.
-                    
-              NOW, THEREFORE, in consideration of the premises and of the covenants, promises and waivers contained herein, the Parties mutually agree as follows:
-            </p>
-            <p>
-              ARTICLE I
-              CONTINGENT AGREEMENT
-                    
-              This Agreement is contingent upon the Parties' contemplated marriage. In the event the marriage does not occur, then this Agreement shall be null and void and of no force or effect.
-            </p>
-            <p>
-              ARTICLE II
-              PREAMBLE
-                    
-              The Parties agree that the Preamble is incorporated herein by reference with the same force and effect as if fully set forth herein at length.
-            </p>
-            <p>
-              ARTICLE III
-                    
-              SEPARATE PROPERTY
-                    
-              A. The following shall constitute the Parties' Separate Property:
-                    
-              1. The property listed on Schedule A as A's property and on Schedule B as W's property, which schedules are annexed hereto and made part hereof.
-              2. All property defined as Separate Property under the Domestic Relations Law of the State of New York, Section 236(B)(1)(d), including property acquired prior to the marriage or by bequest, devise, descent or gifts from third Parties or interspousal gifts.
-              3. Compensation (damages) for personal injury, regardless of when and how suffered, including for pain and suffering, disability, disfigurement, lost wages and earning capacity, and punitive damages.
-              4. Property acquired after a Termination Event as defined in Article V herein.
-              5. All property purchased with or exchanged for Separate Property shall remain Separate Property.
-              6. The appreciation in value, income and profits derived from Separate Property, whether by way of sale, exchange, investment, reinvestment or otherwise shall be and remain Separate Property regardless of the “active" or “passive" nature of said Separate Property and regardless or any direct or indirect contribution or effort of the other Party to the maintenance or appreciation of said Separate Property. Joint use of Separate Property or use of Marital Property to maintain Separate Property shall not give rise to joint ownership of such Separate Property or convert it to Marital Property unless such property is placed in joint names or the Parties agree in a writing executed with the same formality as this Agreement. Separate Property used to acquire jointly-owned property will be returned and credited to the Party or Parties that contributed to the purchase of the jointly-owned property, upon a sale of said property or upon the occurrence of a Termination Event as defined below.
-              6.1 With respect to premises ________________, which apartment is A's separate property, the Parties agree that if apartment ____ is sold and a new apartment is purchased and title is taken in A's name alone, or with W jointly or with any other person or person (“New Home"), New Home, together with improvements, shall be A's Separate Property. Thereafter, if New Home is sold and the Parties purchase a subsequent home (apartment or house) and use the proceeds of the sale of New Home to purchase any other future residence(s) in which title is take in joint names or as tenants by the entirety, upon a “Termination Event", A shall be entitled to the return of the proceeds of sale of New Home, minus any monetary contributions from W. The difference between the proceeds of sale of the subsequently acquired apartment or home and of New Home, if any, shall be shared fifty (50%) percent to W and fifty (50%) percent to A.
-              6.2 The Parties acknowledge and agree that A owns fifty-one (51%) percent of his business which is known as ________________ LLC (“________________"). ________________ is located at________________. A's ownership interest in ________________ is his separate property and W acknowledges it as such separate property. In the event that A acquires additional stock in ________________ during the course of the marriage and prior to a Termination Event by purchase, gift or inheritance or if A purchases said stock with funds belonging to ________________, his interest in ________________ or personal funds he acquired before or during the marriage, A's increased ownership of ________________ shall be and remain A's separate property.
-              7. Any and all retirement accounts, including but not limited to, pensions, 401(k) and IRA accounts, only to the extent of the value in such accounts obtained before the marriage (the “Pre-Marriage Value") and the subsequent appreciation in value, if any, on such Pre-Marriage Value due to passive market forces.
-              8. If the Parties co-mingle any of their Separate Property such Separate Property shall not become Marital Property unless the Parties agree in writing that it become Marital Property or they place the co-mingled property in joint names or in a joint account.
-              9. The Parties agree that under no circumstances shall their Separate Property be considered Marital Property or community property or quasi-community property or otherwise be subject to any claim or right of the other in the event of a Termination Event herein, but shall remain the Parties' Separate Property, notwithstanding any contrary provision of the law of any jurisdiction. Each of them shall own, hold and freely dispose of their Separate Property, wherever it may be situated and whether it is now owned by him or her or may hereafter be acquired by him or her, free from all rights of the other therein under the laws of any jurisdiction. Each of them hereby waives, renounces and releases any and all rights which he or she may have under the laws of any jurisdiction in and to the other's Separate Property in the event of a Termination Event, including, without limitation, rights to Marital Property, equitable distribution, a distributive share, community property, quasi-community property, or any other rights, whether they be vested, contingent or inchoate.
-            </p>
-          </p>
-        </textarea>
-      </div>
+        <div class="timeline" id="timeLine">
+          <div onclick="oldVersion(5)"class="timeline-item active" id="5">
+            <div>
+              <img class="profile-pic" src="http://images.huffingtonpost.com/2016-03-07-1457372468-7442274-trump.jpg" />
+              <span class="marker"><span class="dot"></span></span>
+            </div>
+            <div class="timestamp">10:15 am  02/04/2016</div>
+          </div>
 
-      <div class="timeline" id="timeLine">
-        <div class="timeline-item active" onclick="oldVersion()" id="5">
-          <div>
-            <img class="profile-pic" src="images/trump.jpg" />
-            <span class="marker"><span class="dot"></span></span>
+          <div onclick="oldVersion(4)" class="timeline-item">
+            <div>
+              <img class="profile-pic" src="images/granny.jpg" />
+              <span class="marker"><span class="last-seen"></span></span>
+            </div>
+            <div class="timestamp">02:27 pm  01/28/2016</div>
           </div>
-          <div class="timestamp">10:15 am  02/04/2016</div>
+          <div onclick="oldVersion(3)" class="timeline-item">
+              <div>
+                <img class="profile-pic" src="images/granny.jpg" />
+                <span class="marker"><span class="dot"></span></span>
+              </div>
+              <div class="timestamp">12:27 pm  01/28/2016</div>
+          </div>
+          <div onclick="oldVersion(2)" class="timeline-item">
+            <div>
+              <img class="profile-pic" src="images/granny.jpg" />
+              <span class="marker"><span class="dot"></span></span>
+            </div>
+            <div class="timestamp">11:32 am  01/28/2016</div>
+          </div>
+          <div onclick="oldVersion(1)" class="timeline-item">
+            <div>
+              <img class="profile-pic" src="images/harvey.jpg" /> <span class="marker">
+              <span class="dot"></span></span>
+            </div>
+            <div class="timestamp">10:45 am  01/28/2016</div>
+          </div>
+          <div onclick="oldVersion(0)" class="timeline-item">
+            <div>
+              <img class="profile-pic" src="images/granny.jpg" /> <span class="marker">
+              <span class="dot"></span></span>
+            </div>
+            <div class="timestamp">09:27 am  01/28/2016</div>
+          </div>
         </div>
-      <div class="timeline-item" onclick="oldVersion()" id="4">
-        <div>
-          <img class="profile-pic" src="images/granny.jpg" />
-          <span class="marker"><span class="last-seen"></span></span>
-        </div>
-        <div class="timestamp">02:27 pm  01/28/2016</div>
-        </div>
-      <div onclick="oldVersion()" class="timeline-item" id="3">
-        <div>
-          <img class="profile-pic" src="images/granny.jpg" />
-          <span class="marker"><span class="dot"></span></span>
-        </div>
-        <div class="timestamp">12:27 pm  01/28/2016</div>
-      </div>
-      <div onclick="oldVersion()" class="timeline-item" id="2">
-        <div>
-          <img class="profile-pic" src="images/granny.jpg" />
-          <span class="marker"><span class="dot"></span></span>
-        </div>
-        <div class="timestamp">11:32 am  01/28/2016</div>
-      </div>
-      <div onclick="oldVersion(this)" class="timeline-item" id="1">
-        <div>
-          <img class="profile-pic" src="images/harvey.jpg" /> <span class="marker">
-          <span class="dot"></span></span>
-        </div>
-        <div class="timestamp">10:45 am  01/28/2016</div>
-      </div>
-      <div onclick="oldVersion(this)" class="timeline-item" id="0">
-        <div>
-          <img class="profile-pic" src="images/granny.jpg" /> <span class="marker">
-          <span class="dot"></span></span>
-        </div>
-        <div class="timestamp">09:27 am  01/28/2016</div>
-      </div>
-      </div>
       </div>
     </div>
   
@@ -222,7 +194,7 @@
           <a class="popupButton" onClick="confirmUpload()">Upload</a>
       </div>
     </div> 
-
+    <iframe id="frmFile" src="Downloaded.txt" style="display: none;"></iframe>
     <script src="gitlaw.js"></script>
 
   </body>
