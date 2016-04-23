@@ -1,6 +1,3 @@
-// This allows the Javascript code inside this block to only run when the page
-// has finished loading in the browser.
-
 var pHight = Math.floor(document.getElementById("timeLine").clientHeight * .94);
 var currentText = "";
 var boxWidth = 400;
@@ -84,63 +81,128 @@ function cancelShare() {
 }
 
 /* comment functions */
+var j=0;
 function commentDoc() {
-  document.getElementById("comment-box").style.visibility = "visible";
-  $( "#comment-input" ).focus();
+  var boundingBox = document.getElementById("bounding-box");
+
+  var newComment = document.createElement('div');
+  newComment.className = "comment-box";
+  newComment.setAttribute('id', 'comment-box-' + j);
+  
+  var closeComment = document.createElement('div');
+  closeComment.className = 'close-comment';
+  closeComment.setAttribute('id', 'close-comment-' + j);
+  closeComment.innerHTML = 'X';
+  
+  var box = document.createElement('div');
+
+  var jessicaPic = document.createElement('div');
+  jessicaPic.innerHTML = "<img class='comment-img' src='images/jessica.jpg'/>";
+
+  var commentInput = document.createElement('input');
+  commentInput.className = "comment-input";
+  commentInput.idName = "comment-input";
+  commentInput.setAttribute('type', 'text');
+  commentInput.setAttribute('size', '55');
+  
+  var commentBoxButton = document.createElement('div');
+  commentBoxButton.className = 'comment-box-button';
+  commentBoxButton.setAttribute('id', 'comment-box-button');
+  commentBoxButton.innerHTML = "<div id='comment-text'>Comment</div>";
+
+  box.appendChild(jessicaPic);
+  box.appendChild(closeComment);
+  box.appendChild(commentInput);
+  box.appendChild(commentBoxButton);
+  newComment.appendChild(box);
+  boundingBox.appendChild(newComment);
+
+  $( newComment ).draggable({ containment: '#bounding-box',
+                              scroll: false,
+                              axis: "y"});
+  $( commentInput ).focus();
+
+  // add script to cancel and close comment input box
+  var close = document.getElementById('close-comment-' + j);
+  if (close.addEventListener)
+      close.addEventListener("click", cancelComment, false);
+  else if (close.attachEvent)
+      close.attachEvent('onclick', cancelComment);
+  
+  // after clicking comment the condensed version
+  $( commentBoxButton ).click(function () {
+
+    // x.top, x.right, x.bottom, x.left
+    var x = newComment.getBoundingClientRect();
+    var x_pos = x.left;
+    var y_pos = x.top;
+
+    newComment.parentNode.removeChild(newComment);
+  
+    var boundingBox = document.getElementById("bounding-box");
+  
+    var finishedComment = document.createElement('div');
+    finishedComment.className = 'finished-comment';
+    finishedComment.setAttribute('id', 'finished-comment' + j);
+    finishedComment.style.position = "absolute";
+    finishedComment.style.left = x_pos+'px';
+    finishedComment.style.top = y_pos+'px';
+  
+    var jessicaPic = document.createElement('div');
+    jessicaPic.innerHTML = "<img class='comment-img' src='images/jessica.jpg'/>";
+  
+    var time = document.createElement('div');
+    time.className = "finished-comment-time";
+    var am = "am";
+    var today = new Date();
+    var min = today.getMinutes();
+    var hour = today.getHours();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+    if(dd<10) {
+        dd='0'+dd;
+    } 
+    if(mm<10) {
+        mm='0'+mm;
+    } 
+    if (min<10) {
+        min='0'+min;
+    }
+    if (hour>=12){
+      am = "pm"
+      if (hour > 12){
+        hour = hour-12
+      }
+    }
+    if (hour<10){
+      hour = '0' +hour;
+    }
+    today = hour+':'+min+' '+am+" "+mm+'/'+dd+'/'+yyyy;
+    time.innerHTML = today;
+  
+    var text = document.createElement('div');
+    if (commentInput.value.length > 15) {
+      text.innerHTML = "<p>" + commentInput.value.substring(0,15) + "..." + "</p>";
+    } else {
+      text.innerHTML = "<p>" + commentInput.value + "</p>";
+    }
+    text.className = 'finished-comment-text';
+  
+    finishedComment.appendChild(jessicaPic);
+    finishedComment.appendChild(time);
+    finishedComment.appendChild(text);
+    boundingBox.appendChild(finishedComment);
+  });
+
+  j++;
+
 }
 
-$('#close-comment').click(function () {
-  cancelComment();
-});
-
-$('#comment-box-button').click(function () {
-  cancelComment();
-  document.getElementById('finished-comment').style.visibility = "visible";
-  var finishedComment = document.getElementById('finished-comment');
-  finishedComment.className = 'finished-comment';
-  var commentPic = document.createElement('div');
-  commentPic.innerHTML = "<img class='comment-img' src='images/jessica.jpg' />";
-  var time = document.createElement('div');
-  time.className = "comment-time";
-  var am = "am";
-  var today = new Date();
-  var min = today.getMinutes();
-  var hour = today.getHours();
-  var dd = today.getDate();
-  var mm = today.getMonth()+1;
-  var yyyy = today.getFullYear();
-  if(dd<10) {
-      dd='0'+dd;
-  } 
-  if(mm<10) {
-      mm='0'+mm;
-  } 
-  if (min<10) {
-      min='0'+min;
-  }
-  if (hour>=12){
-    am = "pm"
-    if (hour > 12){
-      hour = hour-12
-    }
-  }
-  if (hour<10){
-    hour = '0' +hour;
-  }
-  today = hour+':'+min+' '+am+" "+mm+'/'+dd+'/'+yyyy;
-  time.innerHTML = today;
-  var text = document.createElement('div');
-  var userInput = document.getElementById('comment-input');
-  text.innerHTML = "<p>" + userInput.value.substring(0,15) + "..." + "</p>";
-  text.className = 'finished-comment-text';
-  finishedComment.appendChild(commentPic);
-  finishedComment.appendChild(time);
-  finishedComment.appendChild(text);
-  editor.appendChild(finishedComment);
-});
-
 function cancelComment() {
-  document.getElementById("comment-box").style.display = "none";
+  var commentID = this.id.split('-').pop();
+  var commentToDelete = document.getElementById("comment-box-" + commentID);
+  commentToDelete.parentNode.removeChild(commentToDelete);
 }
 
 /* download function */
@@ -282,6 +344,7 @@ function oldVersion(number) {
   tinyMCE.activeEditor.setContent(Versions[number]);
   onOriginal = false;
 }
+<<<<<<< a5db945c63e89d75279d78ccf30c1792c524c420
 
 // for dragging the comment box
 var dragObj;

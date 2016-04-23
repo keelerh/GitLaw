@@ -329,8 +329,41 @@ a.popupButton:hover {
     position:absolute;
     background-color:white;
     z-index:10000000000; /* just for you Raoul */
-    visibility: hidden;
     cursor:pointer;
+}
+
+.comment-img {
+    top:5px;
+    left:5px;
+    width:35px;
+    height:35px;
+    border-radius:100%;
+    position:relative;
+    float:left;
+    padding-bottom: 5px;
+}
+
+.close-comment {
+    color: #bebebe;
+    float:right;
+    padding: 7px;
+    position:relative;
+    font-family: Arial, Helvetica, sans-serif;  
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.comment-input {
+    width:128px;
+    left:5px;
+    top:7px;
+    position:relative;
+}
+
+#comment-text {
+    position: absolute;
+    top:20%;
+    left:15%;
 }
 
 .comment-box-button {
@@ -351,43 +384,9 @@ a.popupButton:hover {
 .comment-box-button:hover {
     background-color: #6EBFAB;
 }
-
-#comment-text {
-    position: absolute;
-    top:20%;
-    left:15%;
-}
-
-.close-comment {
-    color: #bebebe;
-    float:right;
-    right:5px;
-    top:5px;
-    position:relative;
-    font-family: Arial, Helvetica, sans-serif;  
-    font-weight: bold;
-    cursor: pointer;
-}
  
 .comment-box .close-comment:hover {
     color: gray;
-}
-
-.comment-input {
-    width:128px;
-    left:5px;
-    top:7px;
-    position:relative;
-}
-
-.comment-img {
-    top:5px;
-    left:5px;
-    width:35px;
-    height:35px;
-    border-radius:100%;
-    position:relative;
-    z-index: 100000000000000000; /* just for you Raoul! */
 }
 
 .finished-comment {
@@ -396,28 +395,23 @@ a.popupButton:hover {
     box-shadow: -5px 5px 5px 0px rgba(207,207,207,1);
     width:150px;
     height:45px;
-    top:200px;
-    left:18px;
-    position:absolute;
     background-color:white;
-    z-index:10000000000;
-    visibility: hidden;
 }
 
 .finished-comment-text {
     font-size:12px;
     float:left;
-    left:45px;
-    bottom:38px;
+    top:0px;
+    left:12px;
     position:relative;
 }
 
-.comment-time {
+.finished-comment-time {
     color: gray;
     font-size: 10px;
     float:left;
-    left:45px;
-    top:-32px;
+    top:5px;
+    left:15px;
     position:relative;
 }
 
