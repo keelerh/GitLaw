@@ -56,20 +56,15 @@ li a:active{
     overflow:auto;
 }
 
+.imgWrap {
+  position:relative;
+  cursor: default;
+}
+
 .img-circle {
     border-radius: 100%;
     width:45px;
     height: 45px;
-    cursor:pointer;
-}
-
-.imgWrap {
-  position:relative;
-}
-
-.img-circle:hover{
-    position:relative;
-    top:1px;
 }
 
 .user {
@@ -80,7 +75,6 @@ li a:active{
   text-align: center;
   background-color:rgba(0,0,0,0.5);
   color: white;
-  cursor: pointer;
   visibility: hidden;
   opacity: 0;
   border-radius: 6px; 
@@ -112,7 +106,6 @@ li a:active{
     background-color: #eee;
     overflow: hidden;
 }
-
 
 div {
     box-sizing: border-box;
@@ -257,7 +250,7 @@ div {
 .popup-box .bottom {
     background: #eee;
     border-top: 1px solid #e5e5e5;
-    padding: 20px;
+    padding: 10px 20px 20px 20px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -288,6 +281,11 @@ div {
 .popup-box h1 {
     color: black;
     font-size: 18px;
+}
+
+.popup-box h3 {
+    color: black;
+    font-size: 14px;
 }
 
 
