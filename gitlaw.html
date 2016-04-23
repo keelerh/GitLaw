@@ -80,18 +80,23 @@
       <div class="mainWrapper">
       <div class="editor" id="editor">
 <!--         <canvas id="myCanvas" onclick="relMouseCoords(event)"></canvas> -->
-        <div class="finished-comment" id="finished-comment">
-        </div>
-        <div class="comment-box" id="comment-box" onclick="commentDoc()">
-          <div class="close-comment" id="close-comment" onclick="cancelComment()">X</div>
-          <div>    
-            <form >
-              <img class="comment-img" src="images/jessica.jpg"/> <br>
-              <input type="text" class="comment-input" size="55" id="comment-input"> <br>
-                <div class="comment-box-button" id="comment-box-button"><div id="comment-text">Comment</div></div>
-            </form>
+        <!-- bound box on left side for comments -->
+        <div id="box" class="bound">
+<!--         after clicking comment the condensed version -->
+          <div class="finished-comment" id="finished-comment">
+<!--           the entire box with prof pic and where you can commit and cancel or comment -->
+            <div class="comment-box drag" id="comment-box" onclick="commentDoc()">
+            <div class="close-comment" id="close-comment" onclick="cancelComment()">X</div>
+            <div>    
+                <form >
+                  <img class="comment-img" src="images/jessica.jpg"/> <br>
+                  <input type="text" class="comment-input" size="55" id="comment-input"> <br>
+                  <div class="comment-box-button" id="comment-box-button"><div id="comment-text">Comment</div></div>
+                </form>
+            </div>
+            </div> 
           </div>
-        </div> 
+        </div>
         <textarea id="TText">
           <p>
             <p>

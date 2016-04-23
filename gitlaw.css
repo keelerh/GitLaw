@@ -437,3 +437,21 @@ a.popupButton {
     top:-32px;
     position:relative;
 }
+
+.box {
+    position:absolute;
+    top:15px;
+    left:0px;
+    height:100px;
+    width:40px;
+    border:solid;
+    border-color:red;
+    z-index:100000000000000000;
+}
+
+.drag {
+    position: absolute;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
