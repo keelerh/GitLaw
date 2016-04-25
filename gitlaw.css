@@ -109,7 +109,7 @@ div {
     box-sizing: border-box;
 }
 
-.timeline {
+.timeline-wrapper {
     float: right;
     width: 24%;
     height: 90%;
@@ -117,37 +117,55 @@ div {
     margin-top: 10px;
     margin-right: 0;
     position: relative;
-    overflow:auto;
 }
-.timeline .timeline-item {
+
+.timeline-title {
+    position: relative;
+    color: rgb(128,128,128);
+    margin: -5px 10px 10px 10px;
+    padding: 5px;
+    vertical-align: middle;
+    outline: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+.timeline {
+    width: 100%;
+    height: 100%;
+    overflow:auto;
+    position:relative;
+}
+
+.timeline-wrapper .timeline .timeline-item {
     width: 100%;
     min-width: 170px;
     height: 100px;
     display: inline-block;
     margin: -2px;
 }
-.timeline .timeline-item .timestamp, .timeline .timeline-item .profile-pic {
+.timeline-wrapper .timeline .timeline-item .timestamp, .timeline-wrapper .timeline .timeline-item .profile-pic {
     color: #bebebe;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     transition: all 1s ease;
 }
 
-.timeline .active.close .timestamp, .timeline .active.close .profile-pic {
+.timeline-wrapper .timeline .active.close .timestamp, .timeline-wrapper .timeline .active.close .profile-pic {
     color: #bebebe;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     transition: all 1s ease;
 }
 
-.timeline .timeline-item.close .timestamp, .timeline .timeline-item.close .profile-pic {
+.timeline-wrapper .timeline .timeline-item.close .timestamp, .timeline-wrapper .timeline .timeline-item.close .profile-pic {
     color: #bebebe;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     transition: all 1s ease;
 }
 
-.timeline .timeline-item .profile-pic {
+.timeline-wrapper .timeline .timeline-item .profile-pic {
     position: absolute;
     margin: 3% 10% 0 12%;
     border-radius: 50%;
@@ -156,7 +174,7 @@ div {
     border:1px solid #bebebe;
     cursor: pointer;
 }
-.timeline .timeline-item .timestamp {
+.timeline-wrapper .timeline .timeline-item .timestamp {
     color: black;
     width: 58%;
     min-width: 115px;
@@ -169,7 +187,8 @@ div {
     float: right;
     z-index: 0;
 }
-.timeline .timeline-item .marker {
+
+.timeline-wrapper .timeline .timeline-item .marker {
     background-color: #fff;
     border: 4px solid #aaa;
     height: 20px;
@@ -183,7 +202,7 @@ div {
     cursor: pointer;
 }
 
-.timeline .timeline-item .marker .dot {
+.timeline-wrapper .timeline .timeline-item .marker .dot {
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     transition: all 1s ease;
@@ -195,7 +214,8 @@ div {
     float: right;
     z-index: 5000;
 }
-.timeline .timeline-item .marker .last-seen {
+
+.timeline-wrapper .timeline .timeline-item .marker .last-seen {
     display: block;
     border: 4px solid white;
     height: 12px;
@@ -204,7 +224,7 @@ div {
     background-color: #91DB98;
 }
 
-.timeline .timeline-item.active .marker .dot, .timeline .timeline-item:hover .marker .dot {
+.timeline-wrapper .timeline .timeline-item.active .marker .dot, .timeline .timeline-item:hover .marker .dot {
     background-color: #6EBFAB;
 }
 

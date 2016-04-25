@@ -70,7 +70,7 @@
               <p class="user">Harvey</p>
             </div>
           </li>
-        </div>
+          </div>
           <li onclick="newVersionFunc()" style="float:right" id="newVersion"><a href="#Share">Publish</a></li>
           <li onclick="downloadDoc()" style="float:right"><a href="Downloaded.txt" download>Download</a></li>
           <li onclick="uploadDoc()" style="float:right" ><a>Upload</a></li>
@@ -107,48 +107,51 @@
 <p>I HAVE READ THE ABOVE AGREEMENT, I HAVE TAKEN TIME TO CONSIDER ITS IMPLICATIONS, I FULLY UNDERSTAND ITS CONTENTS, I AGREE TO ITS TERMS, AND I VOLUNTARILY SUBMIT TO ITS EXECUTION. John Smith Prospective Husband Sally Wilson Prospective Wife</p>
           </textarea>
         </div>
-        <div class="timeline" id="timeLine">
-          <div onclick="oldVersion(5)"class="timeline-item active" id="5">
-            <div>
-              <img class="profile-pic" src="http://images.huffingtonpost.com/2016-03-07-1457372468-7442274-trump.jpg" />
-              <span class="marker"><span class="dot"></span></span>
+        <div class="timeline-wrapper">
+          <div class="timeline-title"><a>Document Timeline</a></div>
+          <div class="timeline" id="timeLine">
+            <div onclick="oldVersion(5)"class="timeline-item active" id="5">
+              <div>
+                <img class="profile-pic" src="images/trump.jpg" />
+                <span class="marker"><span class="dot"></span></span>
+              </div>
+              <div class="timestamp">10:15 am  02/04/2016</div>
             </div>
-            <div class="timestamp">10:15 am  02/04/2016</div>
-          </div>
-          <div onclick="oldVersion(4)" class="timeline-item">
-            <div>
-              <img class="profile-pic" src="images/granny.jpg" />
-              <span class="marker"><span class="last-seen"></span></span>
+            <div onclick="oldVersion(4)" class="timeline-item">
+              <div>
+                <img class="profile-pic" src="images/granny.jpg" />
+                <span class="marker"><span class="last-seen"></span></span>
+              </div>
+              <div class="timestamp">02:27 pm  01/28/2016</div>
             </div>
-            <div class="timestamp">02:27 pm  01/28/2016</div>
-          </div>
-          <div onclick="oldVersion(3)" class="timeline-item">
+            <div onclick="oldVersion(3)" class="timeline-item">
+                <div>
+                  <img class="profile-pic" src="images/granny.jpg" />
+                  <span class="marker"><span class="dot"></span></span>
+                </div>
+                <div class="timestamp">12:27 pm  01/28/2016</div>
+            </div>
+            <div onclick="oldVersion(2)" class="timeline-item">
               <div>
                 <img class="profile-pic" src="images/granny.jpg" />
                 <span class="marker"><span class="dot"></span></span>
               </div>
-              <div class="timestamp">12:27 pm  01/28/2016</div>
-          </div>
-          <div onclick="oldVersion(2)" class="timeline-item">
-            <div>
-              <img class="profile-pic" src="images/granny.jpg" />
-              <span class="marker"><span class="dot"></span></span>
+              <div class="timestamp">11:32 am  01/28/2016</div>
             </div>
-            <div class="timestamp">11:32 am  01/28/2016</div>
-          </div>
-          <div onclick="oldVersion(1)" class="timeline-item">
-            <div>
-              <img class="profile-pic" src="images/harvey.jpg" /> <span class="marker">
-              <span class="dot"></span></span>
+            <div onclick="oldVersion(1)" class="timeline-item">
+              <div>
+                <img class="profile-pic" src="images/harvey.jpg" /> <span class="marker">
+                <span class="dot"></span></span>
+              </div>
+              <div class="timestamp">10:45 am  01/28/2016</div>
             </div>
-            <div class="timestamp">10:45 am  01/28/2016</div>
-          </div>
-          <div onclick="oldVersion(0)" class="timeline-item">
-            <div>
-              <img class="profile-pic" src="images/granny.jpg" /> <span class="marker">
-              <span class="dot"></span></span>
+            <div onclick="oldVersion(0)" class="timeline-item">
+              <div>
+                <img class="profile-pic" src="images/granny.jpg" /> <span class="marker">
+                <span class="dot"></span></span>
+              </div>
+              <div class="timestamp">09:27 am  01/28/2016</div>
             </div>
-            <div class="timestamp">09:27 am  01/28/2016</div>
           </div>
         </div>
       </div>

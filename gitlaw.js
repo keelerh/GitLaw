@@ -292,7 +292,7 @@ var numberToGive = 6;
 function newVersionFunc() {
       Versions.push(tinyMCE.activeEditor.getContent());
       var newNum = numberToGive
-      lastElement.getElementsByClassName("dot")[0].setAttribute("style", "background-color: white");
+      //lastElement.getElementsByClassName("dot")[0].setAttribute("style", "background-color: white");
       var timeLine = document.getElementById("timeLine");
       var newEvent = document.createElement('div');
       newEvent.onclick = function() {oldVersion(newNum)};
