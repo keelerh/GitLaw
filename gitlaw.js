@@ -1,4 +1,4 @@
-var pHight = Math.floor(document.getElementById("timeLine").clientHeight * .94);
+var pHight = Math.floor(document.getElementById("timeLine").clientHeight);
 var currentText = "";
 var boxWidth = 400;
   
@@ -19,13 +19,6 @@ function centerBox() {
   
     return false;
 }
-
-$(window).resize(centerBox);
-$(window).scroll(centerBox);
-centerBox();  
-
-
-/* Menu Bar Functions */
 
 /* share functions */
 function shareDoc() {
@@ -421,31 +414,6 @@ function setHelperBoxPos(obj) {
     maxBox.style.left = obj.maxBoundX + 'px';
     maxBox.style.top = obj.maxBoundY + 'px';
 }
-
-document.addEventListener("mousedown", down, false);
-
-// for comments
-// function relMouseCoords(event){
-//     var totalOffsetX = 0;
-//     var totalOffsetY = 0;
-//     var canvasX = 0;
-//     var canvasY = 0;
-//     var currentElement = this;
-
-//     do{
-//         totalOffsetX += currentElement.offsetLeft - currentElement.scrollLeft;
-//         totalOffsetY += currentElement.offsetTop - currentElement.scrollTop;
-//     }
-//     while(currentElement = currentElement.offsetParent)
-
-//       console.log(event.pageX)
-//     canvasX = event.pageX - totalOffsetX;
-//     canvasY = event.pageY - totalOffsetY;
-//     console.log(canvasY)
-
-//     return {x:canvasX, y:canvasY}
-// }
-
 
 
 // Bellow This will be the previous documents and other stuff I am using Dont Mess With it Bro
