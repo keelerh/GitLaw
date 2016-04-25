@@ -1,6 +1,3 @@
-// This allows the Javascript code inside this block to only run when the page
-// has finished loading in the browser.
-
 var pHight = Math.floor(document.getElementById("timeLine").clientHeight * .94);
 var currentText = "";
 var boxWidth = 400;
@@ -84,63 +81,128 @@ function cancelShare() {
 }
 
 /* comment functions */
+var j=0;
 function commentDoc() {
-  document.getElementById("comment-box").style.visibility = "visible";
-  $( "#comment-input" ).focus();
+  var boundingBox = document.getElementById("bounding-box");
+
+  var newComment = document.createElement('div');
+  newComment.className = "comment-box";
+  newComment.setAttribute('id', 'comment-box-' + j);
+  
+  var closeComment = document.createElement('div');
+  closeComment.className = 'close-comment';
+  closeComment.setAttribute('id', 'close-comment-' + j);
+  closeComment.innerHTML = 'X';
+  
+  var box = document.createElement('div');
+
+  var jessicaPic = document.createElement('div');
+  jessicaPic.innerHTML = "<img class='comment-img' src='images/jessica.jpg'/>";
+
+  var commentInput = document.createElement('input');
+  commentInput.className = "comment-input";
+  commentInput.idName = "comment-input";
+  commentInput.setAttribute('type', 'text');
+  commentInput.setAttribute('size', '55');
+  
+  var commentBoxButton = document.createElement('div');
+  commentBoxButton.className = 'comment-box-button';
+  commentBoxButton.setAttribute('id', 'comment-box-button');
+  commentBoxButton.innerHTML = "<div id='comment-text'>Comment</div>";
+
+  box.appendChild(jessicaPic);
+  box.appendChild(closeComment);
+  box.appendChild(commentInput);
+  box.appendChild(commentBoxButton);
+  newComment.appendChild(box);
+  boundingBox.appendChild(newComment);
+
+  $( newComment ).draggable({ containment: '#bounding-box',
+                              scroll: false,
+                              axis: "y"});
+  $( commentInput ).focus();
+
+  // add script to cancel and close comment input box
+  var close = document.getElementById('close-comment-' + j);
+  if (close.addEventListener)
+      close.addEventListener("click", cancelComment, false);
+  else if (close.attachEvent)
+      close.attachEvent('onclick', cancelComment);
+  
+  // after clicking comment the condensed version
+  $( commentBoxButton ).click(function () {
+
+    // x.top, x.right, x.bottom, x.left
+    var x = newComment.getBoundingClientRect();
+    var x_pos = x.left;
+    var y_pos = x.top;
+
+    newComment.parentNode.removeChild(newComment);
+  
+    var boundingBox = document.getElementById("bounding-box");
+  
+    var finishedComment = document.createElement('div');
+    finishedComment.className = 'finished-comment';
+    finishedComment.setAttribute('id', 'finished-comment' + j);
+    finishedComment.style.position = "absolute";
+    finishedComment.style.left = x_pos+'px';
+    finishedComment.style.top = y_pos+'px';
+  
+    var jessicaPic = document.createElement('div');
+    jessicaPic.innerHTML = "<img class='comment-img' src='images/jessica.jpg'/>";
+  
+    var time = document.createElement('div');
+    time.className = "finished-comment-time";
+    var am = "am";
+    var today = new Date();
+    var min = today.getMinutes();
+    var hour = today.getHours();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+    if(dd<10) {
+        dd='0'+dd;
+    } 
+    if(mm<10) {
+        mm='0'+mm;
+    } 
+    if (min<10) {
+        min='0'+min;
+    }
+    if (hour>=12){
+      am = "pm"
+      if (hour > 12){
+        hour = hour-12
+      }
+    }
+    if (hour<10){
+      hour = '0' +hour;
+    }
+    today = hour+':'+min+' '+am+" "+mm+'/'+dd+'/'+yyyy;
+    time.innerHTML = today;
+  
+    var text = document.createElement('div');
+    if (commentInput.value.length > 15) {
+      text.innerHTML = "<p>" + commentInput.value.substring(0,15) + "..." + "</p>";
+    } else {
+      text.innerHTML = "<p>" + commentInput.value + "</p>";
+    }
+    text.className = 'finished-comment-text';
+  
+    finishedComment.appendChild(jessicaPic);
+    finishedComment.appendChild(time);
+    finishedComment.appendChild(text);
+    boundingBox.appendChild(finishedComment);
+  });
+
+  j++;
+
 }
 
-$('#close-comment').click(function () {
-  cancelComment();
-});
-
-$('#comment-box-button').click(function () {
-  cancelComment();
-  document.getElementById('finished-comment').style.visibility = "visible";
-  var finishedComment = document.getElementById('finished-comment');
-  finishedComment.className = 'finished-comment';
-  var commentPic = document.createElement('div');
-  commentPic.innerHTML = "<img class='comment-img' src='images/jessica.jpg' />";
-  var time = document.createElement('div');
-  time.className = "comment-time";
-  var am = "am";
-  var today = new Date();
-  var min = today.getMinutes();
-  var hour = today.getHours();
-  var dd = today.getDate();
-  var mm = today.getMonth()+1;
-  var yyyy = today.getFullYear();
-  if(dd<10) {
-      dd='0'+dd;
-  } 
-  if(mm<10) {
-      mm='0'+mm;
-  } 
-  if (min<10) {
-      min='0'+min;
-  }
-  if (hour>=12){
-    am = "pm"
-    if (hour > 12){
-      hour = hour-12
-    }
-  }
-  if (hour<10){
-    hour = '0' +hour;
-  }
-  today = hour+':'+min+' '+am+" "+mm+'/'+dd+'/'+yyyy;
-  time.innerHTML = today;
-  var text = document.createElement('div');
-  var userInput = document.getElementById('comment-input');
-  text.innerHTML = "<p>" + userInput.value.substring(0,15) + "..." + "</p>";
-  text.className = 'finished-comment-text';
-  finishedComment.appendChild(commentPic);
-  finishedComment.appendChild(time);
-  finishedComment.appendChild(text);
-  editor.appendChild(finishedComment);
-});
-
 function cancelComment() {
-  document.getElementById("comment-box").style.display = "none";
+  var commentID = this.id.split('-').pop();
+  var commentToDelete = document.getElementById("comment-box-" + commentID);
+  commentToDelete.parentNode.removeChild(commentToDelete);
 }
 
 /* download function */
@@ -220,13 +282,15 @@ tinymce.init({
     'searchreplace visualblocks fullscreen',
     'insertdatetime contextmenu paste code'
   ],
-  toolbar: 'print | cut copy paste | insertfile undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist',
-});
+  toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+  image_advtab: true,
+  });
 
 
 var lastElement = document.getElementById("5");
 var numberToGive = 6;
 function newVersionFunc() {
+      Versions.push(tinyMCE.activeEditor.getContent());
       var newNum = numberToGive
       lastElement.getElementsByClassName("dot")[0].setAttribute("style", "background-color: white");
       var timeLine = document.getElementById("timeLine");
@@ -387,15 +451,15 @@ document.addEventListener("mousedown", down, false);
 // Bellow This will be the previous documents and other stuff I am using Dont Mess With it Bro
 var Versions = new Array();
 //First Version:
-Versions.push("<p><span style='background-color:#98ff98;'>John Smith, hereinafter referred to as Prospective Husband, and Sally Wilson, hereinafter referred to as Prospective Wife, hereby agree on this 3rd day of April, in the year 2016, as follows:</span></p><ol><li><span style='background-color:#98ff98;'>Prospective Husband and Prospective Wife contemplate marriage in the near future and wish to establish their respective rights and responsibilities regarding each other's income and property and the income and property that may be acquired, either separately or together, during the marriage.</span></li><li><span style='background-color:#98ff98;'>Prospective Husband and Prospective Wife have made a full and complete disclosure to each other of all of their financial assets and liabilities, as more fully set forth in the accompanying Financial Statements.</span></li><li><span style='background-color:#98ff98;'>Exhibits A and B. Except as otherwise provided below, Prospective Husband and Prospective Wife waive the following rights:</span><ol><li><span style='background-color:#98ff98;'>To share in each other's estates upon their death.</span></li><li><span style='background-color:#98ff98;'>To spousal maintenance, both temporary and permanent.</span></li><li><span style='background-color:#98ff98;'>To share in the increase in value during the marriage of the separate property of the parties.</span</li><li><span style='background-color:#98ff98;'>To share in the pension, profit sharing, or other retirement accounts of the other.</span></li><li><span style='background-color:#98ff98;'>To the division of the separate property of the parties, whether currently held or hereafter acquired.</span></li><li><span style='background-color:#98ff98;'>To any claims based on the period of cohabitation of the parties.</span></li></ol></li><li><span style='background-color:#98ff98;'>Both Prospective Husband and Prospective Wife are represented by separate and independent legal counsel of their own choosing.</span></li><li><span style='background-color:#98ff98;'>Both Prospective Husband and Prospective Wife have separate income and assets to independently provide for their own respective financial needs.</span></li><li><span style='background-color:#98ff98;'>This agreement constitutes the entire agreement of the parties and may be modified only in a writing executed by both Prospective Husband and Prospective Wife.</span></li><li><span style='background-color:#98ff98;'>In the event it is determined that a provision of this agreement is invalid because it is contrary to applicable law, that provision is deemed separable from the rest of the agreement, such that the remainder of the agreement remains valid and enforceable.</span></li><li><span style='background-color:#98ff98;'>This agreement is made in accordance with the laws of the state of Massachuseets, and any dispute regarding its enforcement will be resolved by reference to the laws of that state.</span></li><li><span style='background-color:#98ff98;'>This agreement will take effect immediately upon the solemnization of the parties' marriage.</span></li></ol><p><span style='background-color:#98ff98;'>&nbsp;</span></p><p><span style='background-color:#98ff98;'>I HAVE READ THE ABOVE AGREEMENT, I HAVE TAKEN TIME TO CONSIDER ITS IMPLICATIONS, I FULLY UNDERSTAND ITS CONTENTS, I AGREE TO ITS TERMS, AND I VOLUNTARILY SUBMIT TO ITS EXECUTION. John Smith Prospective Husband Sally Wilson Prospective Wife</span></p>");
+Versions.push("<p><span style='background-color: #98ff98;'>John Smith, hereinafter referred to as Prospective Husband, and Sally Wilson, hereinafter referred to as Prospective Wife, hereby agree on this 3rd day of April, in the year 2016, as follows:</span></p><ol><li><span style='background-color: #98ff98;'>Prospective Husband and Prospective Wife contemplate marriage in the near future and wish to establish their respective rights and responsibilities regarding each other's income and property and the income and property that may be acquired, either separately or together, during the marriage.</span></li><li><span style='background-color: #98ff98;'>Prospective Husband and Prospective Wife have made a full and complete disclosure to each other of all of their financial assets and liabilities, as more fully set forth in the accompanying Financial Statements.</span></li><li><span style='background-color: #98ff98;'>Exhibits A and B. Except as otherwise provided below, Prospective Husband and Prospective Wife waive the following rights:</span><ol><li><span style='background-color: #98ff98;'>To share in each other's estates upon their death.</span></li><li><span style='background-color: #98ff98;'>To spousal maintenance, both temporary and permanent.</span></li><li><span style='background-color: #98ff98;'>To share in the increase in value during the marriage of the separate property of the parties.</span></li><li><span style='background-color: #98ff98;'>To share in the pension, profit sharing, or other retirement accounts of the other.</span></li><li><span style='background-color: #98ff98;'>To the division of the separate property of the parties, whether currently held or hereafter acquired.</span></li><li><span style='background-color: #98ff98;'>To any claims based on the period of cohabitation of the parties.</span></li></ol></li><li><span style='background-color: #98ff98;'>Both Prospective Husband and Prospective Wife are represented by separate and independent legal counsel of their own choosing.</span></li><li><span style='background-color: #98ff98;'>Both Prospective Husband and Prospective Wife have separate income and assets to independently provide for their own respective financial needs.</span></li><li><span style='background-color: #98ff98;'>This agreement constitutes the entire agreement of the parties and may be modified only in a writing executed by both Prospective Husband and Prospective Wife.</span></li><li><span style='background-color: #98ff98;'>In the event it is determined that a provision of this agreement is invalid because it is contrary to applicable law, that provision is deemed separable from the rest of the agreement, such that the remainder of the agreement remains valid and enforceable.</span></li><li><span style='background-color: #98ff98;'>This agreement is made in accordance with the laws of the state of Massachuseets, and any dispute regarding its enforcement will be resolved by reference to the laws of that state.</span></li><li><span style='background-color: #98ff98;'>This agreement will take effect immediately upon the solemnization of the parties' marriage.</span></li></ol><p>&nbsp;</p><p><span style='background-color: #98ff98;'>I HAVE READ THE ABOVE AGREEMENT, I HAVE TAKEN TIME TO CONSIDER ITS IMPLICATIONS, I FULLY UNDERSTAND ITS CONTENTS, I AGREE TO ITS TERMS, AND I VOLUNTARILY SUBMIT TO ITS EXECUTION. John Smith Prospective Husband Sally Wilson Prospective Wife</span></p>");
 //Second Version:
-Versions.push("Hello World <span style='background-color:#98ff98;'> <br>The Quick Brown Fox Jumped Over The Lazy Dog <br>You Know the Quick Brown Fox That Jumped Over The Lazy Dog <br>Yes I Know Of His HE is Very Cool!<br></span>");
+Versions.push("<p><span style='background-color: #ffffff;'><span style='background-color: #98ff98;'>John Smith, hereinafter referred to as Prospective Husband, and Sally Wilson, hereinafter referred to as Prospective Wife,</span> <span style='background-color: #ff6161;'>John Smith and Sally Wilson</span> hereby agree on this 3rd day of April, in the year 2016, as follows:</span></p><ol><li><span style='background-color: #98ff98;'><span style='background-color: #ffffff;'><span style='background-color: #ff6161;'>John Smith and Sally Wilson want to get married soon; however, they want to establish whos stuff is whos</span>&nbsp;<span style='background-color: #98ff98;'>Prospe</span></span>ctive Husband and Prospective Wife contemplate marriage in the near future and wish to establish their respective rieghts and responsibilities regarding each other's income and property and the income and property that may be acquired, either separately or together, during the marriage.</span></li><li><span style='background-color: #ffffff;'>Prospective Husband and Prospective Wife have made a full and complete disclosure to each other of all of their financial assets and liabilities, as more fully set forth in the accompanying Financial Statements.</span></li><li><span style='background-color: #ffffff;'>Exhibits A and B. Except as otherwise provided below, Prospective Husband and Prospective Wife waive the following rights:</span>&nbsp;<ol><li><span style='background-color: #ffffff;'>To share in each other's estates upon their death.</span></li><li><span style='background-color: #ffffff;'>To spousal maintenance, both temporary and permanent.</span></li><li><span style='background-color: #ffffff;'>To share in the increase in value during the marriage of the separate property of the parties.</span></li><li><span style='background-color: #98ff98;'>To share in the pension, profit sharing, or other retirement accounts of the other.</span></li><li><span style='background-color: #98ff98;'>To the division of the separate property of the parties, whether currently held or hereafter acquired.</span></li><li><span style='background-color: #98ff98;'>To any claims based on the period of cohabitation of the parties.</span></li></ol></li><li><span style='background-color: #ff6161;'>The Children of the parties will be raised Catholic</span></li><li><span style='background-color: #ffffff;'>Both Prospective Husband and Prospective Wife are represented by separate and independent legal counsel of their own choosing.</span></li><li><span style='background-color: #ffffff;'>Both Prospective Husband and Prospective Wife have separate income and assets to independently provide for their own respective financial needs.</span></li><li><span style='background-color: #98ff98;'>This agreement constitutes the entire agreement of the parties and may be modified only in a writing executed by both Prospective Husband and Prospective Wife.</span></li><li><span style='background-color: #98ff98;'>In the event it is determined that a provision of this agreement is invalid because it is contrary to applicable law, that provision is deemed separable from the rest of the agreement, such that the remainder of the agreement remains valid and enforceable.</span></li><li><span style='background-color: #98ff98;'>This agreement is made in accordance with the laws of the state of Massachuseets, and any dispute regarding its enforcement will be resolved by reference to the laws of that state.</span></li><li><span style='background-color: #98ff98;'>This agreement will take effect immediately upon the solemnization of the parties' marriage.</span></li></ol><p><span style='background-color: #ffffff;'>&nbsp;</span></p><p><span style='background-color: #98ff98;'>I HAVE READ THE ABOVE AGREEMENT, I HAVE TAKEN TIME TO CONSIDER ITS IMPLICATIONS, I FULLY UNDERSTAND ITS CONTENTS, I AGREE TO ITS TERMS, AND I VOLUNTARILY SUBMIT TO ITS EXECUTION. John Smith Prospective Husband Sally Wilson Prospective Wife</span></p>");
 //Third Version:
-Versions.push("Hello World <br> The Quick Brown Fox Jumped Over The Lazy Dog <br> <span style='background-color:#98ff98;'> You Know the Quick Brown Fox That Jumped Over The Lazy Dog <br> Yes I Know Of His HE is Very Cool!<br></span>");
+Versions.push("<p><span style='background-color: #ffffff;'><span style='background-color: #98ff98;'>John Smith, hereinafter referred to as Prospective Husband, and Sally Wilson, hereinafter referred to as Prospective Wife,</span> hereby agree on this 3rd day of April, in the year 2016, as follows:</span></p><ol><li><span style='background-color: #98ff98;'><span style='background-color: #ffffff;'><span style='background-color: #98ff98;'>Prospe</span></span>ctive Husband and Prospective Wife contemplate marriage in the near future and wish to establish their respective rieghts and responsibilities regarding each other's income and property and the income and property that may be acquired, either separately or together, during the marriage.</span></li><li><span style='background-color: #ffffff;'>Prospective Husband and Prospective Wife have made a full and complete disclosure to each other of all of their financial assets and liabilities, as more fully set forth in the accompanying Financial Statements.</span></li><li><span style='background-color: #ffffff;'>Exhibits A and B. Except as otherwise provided below, Prospective Husband and Prospective Wife waive the following rights:</span>&nbsp;<ol><li><span style='background-color: #ffffff;'>To share in each other's estates upon their death.</span></li><li><span style='background-color: #ffffff;'>To spousal maintenance, both temporary and permanent.</span></li><li><span style='background-color: #ffffff;'>To share in the increase in value during the marriage of the separate property of the parties.</span></li><li><span style='background-color: #98ff98;'>To share in the pension, profit sharing, or other retirement accounts of the other.</span></li><li><span style='background-color: #ff6161;'>To share all stock market investments.</span></li><li><span style='background-color: #98ff98;'>To the division of the separate property of the parties, whether currently held or hereafter acquired.</span></li><li><span style='background-color: #ffffff;'>To any claims based on the period of cohabitation of the parties.</span></li></ol></li><li><span style='background-color: #ff6161;'>The Children of the parties will be raised Catholic</span></li><li><span style='background-color: #ffffff;'>Both Prospective Husband and Prospective Wife are represented by separate and independent legal counsel of their own choosing.</span></li><li><span style='background-color: #ffffff;'>Both Prospective Husband and Prospective Wife have separate income and assets to independently provide for their own respective financial needs.</span></li><li><span style='background-color: #ffffff;'>This agreement constitutes the entire agreement of the parties and may be modified only in a writing executed by both Prospective Husband and Prospective Wife.</span></li><li><span style='background-color: #ffffff;'>In the event it is determined that a provision of this agreement is invalid because it is contrary to applicable law, that provision is deemed separable from the rest of the agreement, such that the remainder of the agreement remains valid and enforceable.</span></li><li><span style='background-color: #98ff98;'>This agreement is made in accordance with the laws of the state of Massachuseets, and any dispute regarding its enforcement will be resolved by reference to the laws of that state.</span></li><li><span style='background-color: #98ff98;'>This agreement will take effect immediately upon the solemnization of the parties' marriage.</span></li></ol><p><span style='background-color: #ffffff;'>&nbsp;</span></p><p><span style='background-color: #ffffff;'>I HAVE READ THE ABOVE AGREEMENT, I HAVE TAKEN TIME TO CONSIDER ITS IMPLICATIONS, I FULLY UNDERSTAND ITS CONTENTS, I AGREE TO ITS TERMS, AND I VOLUNTARILY SUBMIT TO ITS EXECUTION. John Smith Prospective Husband Sally Wilson Prospective Wife</span></p>");
 //Fourth Version:
-Versions.push("Hello World <br> The Quick Brown Fox Jumped Over The Lazy Dog <br> You Know the Quick Brown Fox That Jumped Over The Lazy Dog <br> <span style='background-color:#98ff98;'> Yes I Know Of His HE is Very Cool!<br></span>");
+Versions.push("<p><span style='background-color: #ffffff;'>John Smith, hereinafter referred to as Prospective Husband, and Sally Wilson, hereinafter referred to as Prospective Wife, hereby agree on this 3rd day of April, in the year 2016, <span style='background-color: #ff6161;'>and forever after,</span> as follows:</span></p><ol><li><span style='background-color: #98ff98;'><span style='background-color: #ffffff;'><span style='background-color: #98ff98;'>Prospe</span></span>ctive Husband and Prospective Wife contemplate marriage in the near future and wish to establish their respective ri<span style='background-color: #ff6161;'>e</span>ghts <span style='background-color: #ff6161;'> and beliefs,</span>&nbsp;and responsibilities regarding each other's income and property and the income and property that may be acquired, either separately or together, during the marriage.</span></li><li><span style='background-color: #ffffff;'>Prospective Husband and Prospective Wife have made a full and complete disclosure to each other of all of their financial assets and liabilities, as more fully set forth in the accompanying Financial Statements.</span></li><li><span style='background-color: #ffffff;'>Exhibits A and B. Except as otherwise provided below, Prospective Husband and Prospective Wife waive the following rights:</span>&nbsp;<ol><li><span style='background-color: #ffffff;'>To share in each other's estates upon their death.</span></li><li><span style='background-color: #ffffff;'>To spousal maintenance, both temporary and permanent.</span></li><li><span style='background-color: #ffffff;'>To share in the increase in value during the marriage of the separate property of the parties.</span></li><li><span style='background-color: #98ff98;'>To share in the pension, profit sharing, or other retirement accounts of the other.</span></li><li><span style='background-color: #98ff98;'>To the division of the separate property of the parties, whether currently held or hereafter acquired.</span></li><li><span style='background-color: #ffffff;'>To any claims based on the period of cohabitation of the parties.</span></li></ol></li><li><span style='background-color: #ffffff;'>Both Prospective Husband and Prospective Wife are represented by separate and independent legal counsel of their own choosing.</span></li><li><span style='background-color: #ffffff;'>Both Prospective Husband and Prospective Wife have separate income and assets to independently provide for their own respective financial needs.</span></li><li><span style='background-color: #ffffff;'>This agreement constitutes the entire agreement of the parties and may be modified only in a writing executed by both Prospective Husband and Prospective Wife.</span></li><li><span style='background-color: #ffffff;'>In the event it is determined that a provision of this agreement is invalid because it is contrary to applicable law, that provision is deemed separable from the rest of the agreement, such that the remainder of the agreement remains valid and enforceable.</span></li><li><span style='background-color: #ffffff;'>This agreement is made in accordance with the laws of the state of Massachuseets, and any dispute regarding its enforcement will be resolved by reference to the laws of that state.</span></li><li><span style='background-color: #ffffff;'>This agreement will take effect immediately upon the solemnization of the parties' marriage.</span></li></ol><p><span style='background-color: #ffffff;'>&nbsp;</span></p><p><span style='background-color: #ffffff;'>I HAVE READ THE ABOVE AGREEMENT, I HAVE TAKEN TIME TO CONSIDER ITS IMPLICATIONS, I FULLY UNDERSTAND ITS CONTENTS, I AGREE TO ITS TERMS, AND I VOLUNTARILY SUBMIT TO ITS EXECUTION. John Smith Prospective Husband Sally Wilson Prospective Wife</span></p>");
 //Fifth Version:
-Versions.push("Hello World <br> The Quick Brown Fox Jumped Over The Lazy Dog <br> You Know the Quick Brown Fox That Jumped Over The Lazy Dog <br>Yes I Know Of His <span style='background-color:#98ff98;'>HE is Very Cool!<br></span>");
+Versions.push("<p><span style='background-color: #ffffff;'>John Smith, hereinafter referred to as Prospective Husband, and Sally Wilson, hereinafter referred to as Prospective Wife, hereby agree on this 3rd day of April, in the year 2016,&nbsp;as follows:</span></p><ol><li><span style='background-color: #ffffff;'>Prospective Husband and Prospective Wife contemplate marriage in the near future and wish to establish their respective rights and responsibilities regarding each other's income and property and the income and property that may be acquired, either separately or together, during the marriage.</span></li><li><span style='background-color: #ffffff;'>Prospective Husband and Prospective Wife have made a full and complete disclosure to each other of all of their financial assets and liabilities, as more fully set forth in the accompanying Financial Statements.</span></li><li><span style='background-color: #ffffff;'>Exhibits A and B. Except as otherwise provided below, Prospective Husband and Prospective Wife waive the following rights:</span>&nbsp;<ol><li><span style='background-color: #ffffff;'>To share in each other's estates upon their death.</span></li><li><span style='background-color: #ffffff;'>To spousal maintenance, both temporary and permanent.</span></li><li><span style='background-color: #ffffff;'>To share in the increase in value during the marriage of the separate property of the parties.</span></li><li><span style='background-color: #98ff98;'>To share in the pension, profit sharing, or other retirement accounts of the other.</span></li><li><span style='background-color: #98ff98;'>To the division of the separate property of the parties, whether currently held or hereafter acquired.</span></li><li><span style='background-color: #ffffff;'>To any claims based on the period of cohabitation of the parties.</span></li></ol></li><li><span style='background-color: #ffffff;'>Both Prospective Husband and Prospective Wife are represented by separate and independent legal counsel of their own choosing.</span></li><li><span style='background-color: #ffffff;'>Both Prospective Husband and Prospective Wife have separate income and assets to independently provide for their own respective financial needs.</span></li><li><span style='background-color: #ffffff;'>This agreement constitutes the entire agreement of the parties and may be modified only in a writing executed by both Prospective Husband and Prospective Wife.</span></li><li><span style='background-color: #ffffff;'>In the event it is determined that a provision of this agreement is invalid because it is contrary to applicable law, that provision is deemed separable from the rest of the agreement, such that the remainder of the agreement remains valid and enforceable.</span></li><li><span style='background-color: #ffffff;'>This agreement is made in accordance with the laws of the state of Massachuseets, and any dispute regarding its enforcement will be resolved by reference to the laws of that state.</span></li><li><span style='background-color: #ffffff;'>This agreement will take effect immediately upon the solemnization of the parties' marriage.</span></li></ol><p><span style='background-color: #ffffff;'>&nbsp;</span></p><p><span style='background-color: #ffffff;'>I HAVE READ THE ABOVE AGREEMENT, I HAVE TAKEN TIME TO CONSIDER ITS IMPLICATIONS, I FULLY UNDERSTAND ITS CONTENTS, I AGREE TO ITS TERMS, AND I VOLUNTARILY SUBMIT TO ITS EXECUTION. John Smith Prospective Husband Sally Wilson Prospective Wife</span></p>");
 //Sixth Version:
 Versions.push("<p>John Smith, hereinafter referred to as Prospective Husband, and Sally Wilson, hereinafter referred to as Prospective Wife, hereby agree on this 3rd day of April, in the year 2016, as follows:</p><ol><li>Prospective Husband and Prospective Wife contemplate marriage in the near future and wish to establish their respective rights and responsibilities regarding each other's income and property and the income and property that may be acquired, either separately or together, during the marriage.</li><li>Prospective Husband and Prospective Wife have made a full and complete disclosure to each other of all of their financial assets and liabilities, as more fully set forth in the accompanying Financial Statements.</li><li>Exhibits A and B. Except as otherwise provided below, Prospective Husband and Prospective Wife waive the following rights:<ol><li>To share in each other's estates upon their death.</li><li>To spousal maintenance, both temporary and permanent.</li><li>To share in the increase in value during the marriage of the separate property of the parties.</li><li>To share in the pension, profit sharing, or other retirement accounts of the other.</li><li>To the division of the separate property of the parties, whether currently held or hereafter acquired.</li><li>To any claims based on the period of cohabitation of the parties.</li></ol></li><li>Both Prospective Husband and Prospective Wife are represented by separate and independent legal counsel of their own choosing.</li><li>Both Prospective Husband and Prospective Wife have separate income and assets to independently provide for their own respective financial needs.</li><li>This agreement constitutes the entire agreement of the parties and may be modified only in a writing executed by both Prospective Husband and Prospective Wife.</li><li>In the event it is determined that a provision of this agreement is invalid because it is contrary to applicable law, that provision is deemed separable from the rest of the agreement, such that the remainder of the agreement remains valid and enforceable.</li><li>This agreement is made in accordance with the laws of the state of Massachuseets, and any dispute regarding its enforcement will be resolved by reference to the laws of that state.</li><li>This agreement will take effect immediately upon the solemnization of the parties' marriage.</li></ol><p>&nbsp;</p><p>I HAVE READ THE ABOVE AGREEMENT, I HAVE TAKEN TIME TO CONSIDER ITS IMPLICATIONS, I FULLY UNDERSTAND ITS CONTENTS, I AGREE TO ITS TERMS, AND I VOLUNTARILY SUBMIT TO ITS EXECUTION. John Smith Prospective Husband Sally Wilson Prospective Wife</p>");
 var OriginalText = null;

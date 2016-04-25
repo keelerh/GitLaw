@@ -79,24 +79,8 @@
   
       <div class="mainWrapper">
         <div class="editor" id="editor">
-<!--         <canvas id="myCanvas" onclick="relMouseCoords(event)"></canvas> -->
-        <!-- bound box on left side for comments -->
-        <div id="box" class="bound">
-<!--         after clicking comment the condensed version -->
-            <div class="finished-comment" id="finished-comment">
-  <!--           the entire box with prof pic and where you can commit and cancel or comment -->
-              <div class="comment-box drag" id="comment-box" onclick="commentDoc()">
-                <div class="close-comment" id="close-comment" onclick="cancelComment()">X</div>
-                  <div>    
-                      <form >
-                        <img class="comment-img" src="images/jessica.jpg"/> <br>
-                        <input type="text" class="comment-input" size="55" id="comment-input"> <br>
-                        <div class="comment-box-button" id="comment-box-button"><div id="comment-text">Comment</div></div>
-                      </form>
-                  </div>
-                </div> 
-              </div>
-            </div>
+<!-- where all the comments go -->
+        <div id="bounding-box"></div>
           <textarea id='myTextArea'>
 <p>John Smith, hereinafter referred to as Prospective Husband, and Sally Wilson, hereinafter referred to as Prospective Wife, hereby agree on this 3rd day of April, in the year 2016, as follows:</p>
 <ol>
@@ -131,7 +115,6 @@
             </div>
             <div class="timestamp">10:15 am  02/04/2016</div>
           </div>
-
           <div onclick="oldVersion(4)" class="timeline-item">
             <div>
               <img class="profile-pic" src="images/granny.jpg" />
@@ -170,7 +153,6 @@
         </div>
       </div>
     </div>
-  
 
     <div class="popup-box" id="share">
       <div class="close" id="close-share">X</div>
