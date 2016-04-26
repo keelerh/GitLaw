@@ -111,31 +111,31 @@
           <div class="timeline-title"><a>Document Timeline</a></div>
           <div class="timeline" id="timeLine">
             <div onclick="oldVersion(5)"class="timeline-item" id="5">
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                  <div class="flipper">
-                    <div class="front">
-                      <img class="profile-pic" src="images/trump.jpg" />
-                    </div>
-                    <div class="back">
-                      <p>Added two more clauses to the following rights!</p>
-                    </div>
+              <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                <div class="flipper">
+                  <div class="front">
+                    <img class="profile-pic" src="images/trump.jpg" />
+                  </div>
+                  <div class="back">
+                    <p>Added two more clauses to the following rights!</p>
                   </div>
                 </div>
-                <span class="marker"><span class="dot"></span></span>
+              </div>
+              <span class="marker"><span class="dot"></span></span>
               <div class="timestamp">10:15 am  02/04/2016</div>
             </div>
             <div onclick="oldVersion(4)" class="timeline-item">
-                <div class="flip-container">
-                  <div class="flipper">
-                    <div class="front">
-                      <img class="profile-pic" src="images/granny.jpg" />
-                    </div>
-                    <div class="back">
-                      <p>I corrected some spelling and added a provisional clause</p>
-                    </div>
+              <div class="flip-container">
+                <div class="flipper">
+                  <div class="front">
+                    <img class="profile-pic" src="images/granny.jpg" />
+                  </div>
+                  <div class="back">
+                    <p>I corrected some spelling and added a provisional clause</p>
                   </div>
                 </div>
-                <span class="marker"><span class="dot"></span></span>
+              </div>
+              <span class="marker"><span class="dot"></span></span>
               <div class="timestamp">02:27 pm  01/28/2016</div>
             </div>
             <div onclick="oldVersion(3)" class="timeline-item">
@@ -153,59 +153,58 @@
               <div class="timestamp">12:27 pm  01/28/2016</div>
             </div>
             <div onclick="oldVersion(2)" class="timeline-item">
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                  <div class="flipper">
-                    <div class="front">
-                      <img class="profile-pic" src="images/granny.jpg" />
-                    </div>
-                    <div class="back">
-                      <p>Fixed some wording and added a few more clauses!</p>
-                    </div>
+              <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                <div class="flipper">
+                  <div class="front">
+                    <img class="profile-pic" src="images/granny.jpg" />
+                  </div>
+                  <div class="back">
+                    <p>Fixed some wording and added a few more clauses!</p>
                   </div>
                 </div>
-                <span class="marker"><span class="dot"></span></span>
+              </div>
+              <span class="marker"><span class="dot"></span></span>
               <div class="timestamp">11:32 am  01/28/2016</div>
             </div>
             <div onclick="oldVersion(1)" class="timeline-item">
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                  <div class="flipper">
-                    <div class="front">
-                      <img class="profile-pic" src="images/harvey.jpg" /> 
-                    </div>
-                    <div class="back">
-                      <p>I added some basic information about the contract!</p>
-                    </div>
+              <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                <div class="flipper">
+                  <div class="front">
+                    <img class="profile-pic" src="images/harvey.jpg" /> 
+                  </div>
+                  <div class="back">
+                    <p>I added some basic information about the contract!</p>
                   </div>
                 </div>
-                <span class="marker"><span class="dot"></span></span>
+              </div>
+              <span class="marker"><span class="dot"></span></span>
               <div class="timestamp">10:45 am  01/28/2016</div>
             </div>
             <div onclick="oldVersion(0)" class="timeline-item">
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                  <div class="flipper">
-                    <div class="front">
-                      <img class="profile-pic" src="images/granny.jpg" />
-                    </div>
-                    <div class="back">
-                      <p>I just started the document!</p>
-                    </div>
+              <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                <div class="flipper">
+                  <div class="front">
+                    <img class="profile-pic" src="images/granny.jpg" />
+                  </div>
+                  <div class="back">
+                    <p>I just started the document!</p>
                   </div>
                 </div>
-                <span class="marker"><span class="dot"></span></span>
+              </div>
+              <span class="marker"><span class="dot"></span></span>
               <div class="timestamp">09:27 am  01/28/2016</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
     <div class="popup-box" id="share">
       <div class="close" id="close-share">X</div>
       <div class="top">
           <h2>Share</h2>
       </div>
       <div class="bottom">
-          <p><h3>Please enter the name user you would like to share this document with</h3></p>
+          <p><h3>Please enter the name user you would like to share this document with.</h3></p>
           <p><h1>Name:  <input type="text" id="name"></h1></p>
           <a class="popupButton" onClick="confirmShare()">Share</a>
       </div>
@@ -216,12 +215,11 @@
           <h2>Upload File</h2>
       </div>
       <div class="bottom">
-          <p><h3>Please select a new version of this file to upload</h3></p>
+          <p><h3>Please select a new version of this file to upload.</h3></p>
           <p><h1>Select File:  <input type="file" id="files" accept="text/plain"></h1></p>
           <a class="popupButton" onClick="confirmUpload()">Upload</a>
       </div>
     </div> 
-    <iframe id="frmFile" src="Downloaded.txt" style="display: none;"></iframe>
     <script src="gitlaw.js"></script>
 
   </body>
