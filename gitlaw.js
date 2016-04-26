@@ -65,12 +65,9 @@ function confirmShare() {
 }
 
 function cancelShare() {
-  var scrollPos = $(window).scrollTop();
   document.getElementById("share").style.visibility = "hidden";
   document.getElementById("name").value = "";
   document.getElementById("wrapper").style.opacity = "1";
-  $("html,body").css("overflow","auto");
-  $('html').scrollTop(scrollPos);
 }
 
 /* comment functions */
@@ -275,7 +272,7 @@ tinymce.init({
     'searchreplace visualblocks fullscreen',
     'insertdatetime contextmenu paste code'
   ],
-  toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+  toolbar1: 'undo redo | copy paste | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent',
   image_advtab: true,
   });
 
@@ -283,16 +280,47 @@ tinymce.init({
 var lastElement = document.getElementById("5");
 var numberToGive = 6;
 function newVersionFunc() {
+      var passedText = "I would be passedText";
+
+      //push current textEditor text into Versions stack
       Versions.push(tinyMCE.activeEditor.getContent());
-      var newNum = numberToGive
-      //lastElement.getElementsByClassName("dot")[0].setAttribute("style", "background-color: white");
+
+      //grab the timeline
       var timeLine = document.getElementById("timeLine");
+
+      //start the new element block in the timeline that things will be added to
       var newEvent = document.createElement('div');
+      var newNum = numberToGive;
       newEvent.onclick = function() {oldVersion(newNum)};
-      newEvent.className = "timeline-item active";
-      var pic = document.createElement('div');
-      pic.innerHTML = "<img class='profile-pic' src='images/jessica.jpg' /><span class='marker'><span class='dot'></span></span>"
-      newEvent.appendChild(pic);
+      newEvent.className = "timeline-item";
+
+
+      //This Bit Makes the flipper
+      var flipContainer = document.createElement('div');
+      flipContainer.className = "flip-container";
+      var flipper = document.createElement('div');
+      flipper.className = "flipper";
+      var front = document.createElement('div');
+      front.className = "front";
+      front.innerHTML = "<img class='profile-pic' src='images/jessica.jpg'/>";
+      var back = document.createElement('div');
+      back.className = "back";
+      back.innerHTML = "<p>" + passedText + "</p>";
+      flipper.appendChild(front);
+      flipper.appendChild(back);
+      flipContainer.appendChild(flipper);
+      newEvent.appendChild(flipContainer);
+
+
+      //This Bit Makes the Marker And Dot
+      var marker = document.createElement('span');
+      marker.className = "marker";
+      var dot = document.createElement('span');
+      dot.className = "dot";
+      marker.appendChild(dot)
+      newEvent.appendChild(marker);
+
+      //This bit makes the time stamp
       var time = document.createElement('div');
       time.className = "timestamp";
       var am = "am";
@@ -328,6 +356,8 @@ function newVersionFunc() {
       newEvent.appendChild(time);
       timeLine.insertBefore(newEvent,lastElement);
       lastElement = newEvent;
+
+      //let the next event know where in the stack he will be
       numberToGive += 1;
 }
 
