@@ -437,7 +437,6 @@ function oldVersion(number) {
   tinyMCE.activeEditor.setContent(Versions[number]);
   onOriginal = false;
 }
-<<<<<<< Updated upstream
 
 // for dragging the comment box
 var dragObj;
