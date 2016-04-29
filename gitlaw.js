@@ -206,6 +206,7 @@ function uploadDoc() {
   document.getElementById("wrapper").style.opacity = ".25";
 }
 
+
 function confirmUpload() {
   var fileInput = $('#files');
   var uploadButton = $('#upload');
@@ -236,12 +237,54 @@ function processFile(e) {
 }
 
 $('#close-upload').click(function () {
+  console.log("HI");
   cancelUpload();
 });
 
 function cancelUpload() {
   document.getElementById("upload").style.visibility = "hidden";
   document.getElementById("wrapper").style.opacity = "1";
+}
+
+/* publish functions */
+function Publish() {
+  document.getElementById("publish").style.visibility = "visible";
+  document.getElementById("wrapper").style.opacity = ".25";
+  $( "#versionNote" ).focus();
+}
+
+
+function cancelPublish() {
+  document.getElementById("publish").style.visibility = "hidden";
+  document.getElementById("wrapper").style.opacity = "1";
+  document.getElementById("versionNote").value = "";
+}
+
+$('#close-publish').click(function () {
+  cancelPublish();
+});
+
+$('#publish').keyup(function(event){
+  if(event.keyCode == 13){
+    pushVersion();
+  }
+});
+
+function pushVersion() {
+  var message = document.getElementById('versionNote');
+  if (message.value == '') {
+    alert("Please enter a message for your collaborators");
+    return;
+  }
+  if (message.value.length < 60){
+    newVersionFunc(message.value);
+  }
+  else{
+    var sub = message.value.substring(0, 57);
+    newVersionFunc(sub + "...");
+  }
+  
+  cancelPublish();
 }
 
 
@@ -261,6 +304,7 @@ $(".timeline-item").click(function () {
 });
 
 tinymce.init({
+  mode : "exact",
   selector: '#myTextArea',
   theme: 'modern',
   height: pHight,
@@ -279,8 +323,7 @@ tinymce.init({
 
 var lastElement = document.getElementById("5");
 var numberToGive = 6;
-function newVersionFunc() {
-      var passedText = "I would be passedText";
+function newVersionFunc(passedText) {
 
       //push current textEditor text into Versions stack
       Versions.push(tinyMCE.activeEditor.getContent());
@@ -462,3 +505,17 @@ Versions.push("<p><span style='background-color: #ffffff;'>John Smith, hereinaft
 Versions.push("<p>John Smith, hereinafter referred to as Prospective Husband, and Sally Wilson, hereinafter referred to as Prospective Wife, hereby agree on this 3rd day of April, in the year 2016, as follows:</p><ol><li>Prospective Husband and Prospective Wife contemplate marriage in the near future and wish to establish their respective rights and responsibilities regarding each other's income and property and the income and property that may be acquired, either separately or together, during the marriage.</li><li>Prospective Husband and Prospective Wife have made a full and complete disclosure to each other of all of their financial assets and liabilities, as more fully set forth in the accompanying Financial Statements.</li><li>Exhibits A and B. Except as otherwise provided below, Prospective Husband and Prospective Wife waive the following rights:<ol><li>To share in each other's estates upon their death.</li><li>To spousal maintenance, both temporary and permanent.</li><li>To share in the increase in value during the marriage of the separate property of the parties.</li><li>To share in the pension, profit sharing, or other retirement accounts of the other.</li><li>To the division of the separate property of the parties, whether currently held or hereafter acquired.</li><li>To any claims based on the period of cohabitation of the parties.</li></ol></li><li>Both Prospective Husband and Prospective Wife are represented by separate and independent legal counsel of their own choosing.</li><li>Both Prospective Husband and Prospective Wife have separate income and assets to independently provide for their own respective financial needs.</li><li>This agreement constitutes the entire agreement of the parties and may be modified only in a writing executed by both Prospective Husband and Prospective Wife.</li><li>In the event it is determined that a provision of this agreement is invalid because it is contrary to applicable law, that provision is deemed separable from the rest of the agreement, such that the remainder of the agreement remains valid and enforceable.</li><li>This agreement is made in accordance with the laws of the state of Massachuseets, and any dispute regarding its enforcement will be resolved by reference to the laws of that state.</li><li>This agreement will take effect immediately upon the solemnization of the parties' marriage.</li></ol><p>&nbsp;</p><p>I HAVE READ THE ABOVE AGREEMENT, I HAVE TAKEN TIME TO CONSIDER ITS IMPLICATIONS, I FULLY UNDERSTAND ITS CONTENTS, I AGREE TO ITS TERMS, AND I VOLUNTARILY SUBMIT TO ITS EXECUTION. John Smith Prospective Husband Sally Wilson Prospective Wife</p>");
 var OriginalText = null;
 var onOriginal = true;
+
+
+
+//This will Run If Document Resizes So that Text Editor Will be correct height
+$(window).resize(larg);
+
+
+function larg(){
+  tinymce.activeEditor.theme.resizeTo(700,Math.floor(document.getElementById("timeLine").clientHeight));
+}
+
+
+
+

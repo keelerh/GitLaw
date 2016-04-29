@@ -146,6 +146,7 @@ div {
 }
 
 .timeline:hover .timeline-item .timestamp{
+    transition:1s;
     color: #999;
 }
 
@@ -159,6 +160,7 @@ div {
 }
 
 .timeline .timeline-item:hover .timestamp{
+    transition:1s;
     color: black;
 }
 
@@ -224,6 +226,7 @@ div {
 
 
 .timeline .timeline-item .timestamp {
+    transition:1s;
     color: black;
     width: 58%;
     min-width: 115px;
@@ -271,6 +274,13 @@ div {
 }
 
 #comment {
+    visibility: hidden;
+}
+
+#publish {
+    top: 150px;
+    left: 440px;
+    width: 400px;
     visibility: hidden;
 }
 
@@ -326,6 +336,11 @@ div {
 .popup-box .close:hover {
     color: #bebebe;
 }
+
+.popup-box .close:active {
+    position: absolute;
+    top: 1px;
+}
  
 .popup-box h2 {
     color: white;
@@ -349,6 +364,10 @@ input[type="text"] {
     font-family: Arial, Helvetica, sans-serif;
     padding: 3px;
     height: 20px;
+}
+
+#versionNote{
+    width: 95%;
 }
 
 a.popupButton {
