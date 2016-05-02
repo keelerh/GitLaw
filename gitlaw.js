@@ -536,40 +536,19 @@ function setHelperBoxPos(obj) {
     maxBox.style.top = obj.maxBoundY + 'px';
 }
 
-setTimeout(function makeAutoSaveText(){
-  var am = "am";
-      var today = new Date();
-      var min = today.getMinutes();
-      var hour = today.getHours();
-      var dd = today.getDate();
-      var mm = today.getMonth()+1;
-      var yyyy = today.getFullYear();
-      if(dd<10) {
-          dd='0'+dd;
-      } 
-      
-      if(mm<10) {
-          mm='0'+mm;
-      } 
-      
-      if (min<10) {
-          min='0'+min;
-      }
-      if (hour>=12){
-        am = "pm"
-        if (hour > 12){
-          hour = hour-12
-        }
-      }
-      if (hour<10){
-        hour = '0' +hour;
-      }
-      
-      today = hour+':'+min+' '+am+" "+mm+'/'+dd+'/'+yyyy;
-  document.getElementById('autosave').innerHTML =
-    "Saved. Last Autosave: "+ today;
-    var t = setTimeout(makeAutoSaveText, 30000);
-}, 30000);
+
+setInterval(function makeAutoSaveText(){
+  showAutoSaveText();
+  setTimeout(hideAutoSaveText, 3000);
+}, 10000);
+
+function showAutoSaveText(){
+  document.getElementById('autosave').style.opacity=1;
+}
+
+function hideAutoSaveText(){
+  document.getElementById('autosave').style.opacity=0;
+}
 
 
 
