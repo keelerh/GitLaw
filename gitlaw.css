@@ -525,3 +525,10 @@ a.popupButton:active {
     position: absolute;
     left: 45px;
 }
+#autosave{
+    text-align: right;
+    color:black;
+    padding-left:65px;
+    padding-top:35px;
+    font-size: 15px;
+}
