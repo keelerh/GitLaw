@@ -540,7 +540,7 @@ function setHelperBoxPos(obj) {
 setInterval(function makeAutoSaveText(){
   showAutoSaveText();
   setTimeout(hideAutoSaveText, 3000);
-}, 10000);
+}, 5000);
 
 function showAutoSaveText(){
   document.getElementById('autosave').style.opacity=1;
