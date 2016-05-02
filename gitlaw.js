@@ -1,6 +1,7 @@
 var pHight = Math.floor(document.getElementById("timeLine").clientHeight);
 var currentText = "";
 var boxWidth = 400;
+var oldMarker = null;
   
 function centerBox() {
     
@@ -255,14 +256,12 @@ function confirmUpload() {
 function processFile(e) {
   var file = e.target.result,
     results;
-    console.log(results);
   if (file && file.length) {
     document.getElementById("TText").innerHTML = results;
   }
 }
 
 $('#close-upload').click(function () {
-  console.log("HI");
   cancelUpload();
 });
 
@@ -314,20 +313,6 @@ function pushVersion() {
 
 
 /* Timeline Functions */
-$(".timeline-item").hover(function () {
-    $(".timeline-item").removeClass("active");
-    $(this).toggleClass("active");
-    $(this).prev(".timeline-item").toggleClass("close");
-    $(this).next(".timeline-item").toggleClass("close");
-});
-
-$(".timeline-item").click(function () {
-    $(".timeline-item").removeClass("active");
-    $(this).toggleClass("active");
-    $(this).prev(".timeline-item").toggleClass("close");
-    $(this).next(".timeline-item").toggleClass("close");
-});
-
 tinymce.init({
   mode : "exact",
   selector: '#myTextArea',
@@ -359,6 +344,7 @@ function newVersionFunc(passedText) {
       //start the new element block in the timeline that things will be added to
       var newEvent = document.createElement('div');
       var newNum = numberToGive;
+      newEvent.id = newNum;
       newEvent.onclick = function() {oldVersion(newNum)};
       newEvent.className = "timeline-item";
 
@@ -429,10 +415,47 @@ function newVersionFunc(passedText) {
       numberToGive += 1;
 }
 
+
+function goBack(){
+  console.log("ITried");
+  onOriginal = true;
+  tinyMCE.activeEditor.setContent(OriginalText);
+  oldMarker.style.backgroundColor = "white";
+  oldMarker = null;
+  var title = document.getElementById("timeline-title");
+  title.style.visibility = "visible";
+  var goBack = document.getElementById("goBack");
+  goBack.style.visibility = "hidden";
+}
+
 function oldVersion(number) {
   if (onOriginal){
+    console.log("ok");
+    var title = document.getElementById("timeline-title");
+    title.style.visibility = "hidden";
+    var goBack = document.getElementById("goBack");
+    goBack.style.visibility = "visible";
+  }
+  
+
+
+  //This handles the marker
+  var marker = document.getElementById(number).getElementsByClassName("marker")[0];
+  marker.style.backgroundColor = "#6EBFAB";
+  if (oldMarker) {
+    oldMarker.style.backgroundColor = "white";
+  }
+  oldMarker = marker;
+
+  //This removes the last seen tag
+  if (number == 3){
+    lastSeen = document.getElementById("last");
+    lastSeen.innerHTML = "";
+  }
+
+  //this changes the text and holds Original Text
+  if (onOriginal){
     OriginalText = tinyMCE.activeEditor.getContent();
-    console.log(OriginalText);
   }
   tinyMCE.activeEditor.setContent(Versions[number]);
   onOriginal = false;
