@@ -175,8 +175,8 @@ function commentDoc() {
     var text = document.createElement('div');
     var fullText = document.createElement('div');
     fullText.innerHTML = commentInput.value;
-    if (commentInput.value.length > 15) {
-      text.innerHTML = "<p>" + commentInput.value.substring(0,15) + "..." + "</p>";
+    if (commentInput.value.length > 13) {
+      text.innerHTML = "<p>" + commentInput.value.substring(0,13) + "..." + "</p>";
     } else {
       text.innerHTML = "<p>" + commentInput.value + "</p>";
     }
