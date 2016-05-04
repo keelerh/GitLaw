@@ -539,6 +539,7 @@ a.popupButton:active {
     overflow: hidden;
     height:55px;
     width:170px;
+    color: rgb(128,128,128);
 }
 #inner-autosave{
     position: absolute;
