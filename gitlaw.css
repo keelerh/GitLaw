@@ -30,6 +30,7 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    height: 60px;
     overflow: hidden;
     background-color: #bebebe;
 }
@@ -38,7 +39,7 @@ li {
     cursor: pointer;
     width: auto;
     float: left;
-    margin: 5px;
+    margin: 7px 5px 7px 5px;
 }
 
 li a {
@@ -57,6 +58,12 @@ li a:hover {
 li a:active{
     position:relative;
     top:1px;
+}
+
+.logo {
+	cursor: default;
+	width: 50px;
+	height: 50px;
 }
 
 .userImages {
@@ -122,8 +129,7 @@ div {
     width: 24%;
     height: 90%;
     min-width: 175px;
-    margin-top: 10px;
-    margin-right: 0;
+    margin: 10px 0px 0px 0px;
     position: relative;
 }
 
@@ -539,6 +545,7 @@ a.popupButton:active {
     overflow: hidden;
     height:55px;
     width:170px;
+    color: rgb(128,128,128);
 }
 #inner-autosave{
     position: absolute;
