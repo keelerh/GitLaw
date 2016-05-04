@@ -176,7 +176,7 @@ function commentDoc() {
     var fullText = document.createElement('div');
     fullText.innerHTML = commentInput.value;
     if (commentInput.value.length > 13) {
-      text.innerHTML = "<p>" + commentInput.value.substring(0,13) + "..." + "</p>";
+      text.innerHTML = "<p>" + commentInput.value.substring(0,12) + "..." + "</p>";
     } else {
       text.innerHTML = "<p>" + commentInput.value + "</p>";
     }
@@ -211,7 +211,6 @@ function expandComment() {
     var newHeight = height + (10 * numNewLines);
     this.innerHTML = fullText;
     this.style.height = newHeight + 'px';
-    this.style.backgroundColor='red';
   }
 }
 
