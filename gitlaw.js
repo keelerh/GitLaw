@@ -441,10 +441,10 @@ function oldVersion(number) {
 
   //This handles the marker
   var marker = document.getElementById(number).getElementsByClassName("marker")[0];
-  marker.style.backgroundColor = "#6EBFAB";
   if (oldMarker) {
     oldMarker.style.backgroundColor = "white";
   }
+  marker.style.backgroundColor = "#6EBFAB";
   oldMarker = marker;
 
   //This removes the last seen tag
