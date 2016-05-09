@@ -170,15 +170,16 @@ div {
 
     list-style-type: none;
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 5px;
     position: absolute;
-    right:5%;
+    right:0px;
     bottom: 0px;
     float: right;
     vertical-align: middle;
     outline: none;
     padding: auto;
     visibility: hidden;
+    z-index: auto;
 }
 #ggback{
     width: 180px;
@@ -550,8 +551,8 @@ a.popupButton:active {
     -moz-transition: opacity .55s ease-in-out;
     -webkit-transition: opacity .55s ease-in-out;
     position: absolute;
-    right:5%;
-    bottom:50px;
+    right:0px;
+    bottom:0px;
     float:right;
     vertical-align:bottom;
     text-align: right;
@@ -562,6 +563,8 @@ a.popupButton:active {
     height:55px;
     width:170px;
     color: rgb(128,128,128);
+    z-index: auto;
+    margin: 0px;
 }
 #inner-autosave{
     position: absolute;
@@ -570,7 +573,10 @@ a.popupButton:active {
 }
 .save-holder{
     position: relative;
+    height: 58px;
+    width: 300px;
     float: right;
+    overflow: hidden;
 }
 
 
