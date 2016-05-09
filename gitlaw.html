@@ -75,8 +75,10 @@
           <li onclick="Publish()" style="float:right" id="newVersion"><a href="#Share">Publish</a></li>
           <li onclick="downloadDoc()" style="float:right"><a href="Downloaded.txt" download>Download</a></li>
           <li onclick="uploadDoc()" style="float:right" ><a>Upload</a></li>
-
-          <li id="autosave"><div id="inner-autosave">Current version saved...</div></li>
+          <div class="save-holder">
+            <li id="autosave"><div id="inner-autosave">Current version saved...</div></li>
+            <li><div id="goBack"><a onclick="goBack()" id="ggback">Current Version</a></div></li>
+          </div>
         </ul>
       </div>
   
@@ -113,7 +115,6 @@
         <div class="timeline-wrapper">
           <div class="title-back">
             <div id="timeline-title"><a>Document Timeline</a></div>
-            <div id="goBack"><li onclick="goBack()"><a id="ggback">Current Version</a></li></div>
           </div>
           <div class="timeline" id="timeLine">
             <div onclick="oldVersion(5)" id="5" class="timeline-item">

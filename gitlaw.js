@@ -425,6 +425,8 @@ function goBack(){
   title.style.visibility = "visible";
   var goBack = document.getElementById("goBack");
   goBack.style.visibility = "hidden";
+  var autosave= document.getElementById("inner-autosave");
+  autosave.style.visibility= "visible"
 }
 
 function oldVersion(number) {
@@ -434,6 +436,9 @@ function oldVersion(number) {
     title.style.visibility = "hidden";
     var goBack = document.getElementById("goBack");
     goBack.style.visibility = "visible";
+    var autosave= document.getElementById("inner-autosave");
+    autosave.style.visibility= "hidden"
+
   }
   
 

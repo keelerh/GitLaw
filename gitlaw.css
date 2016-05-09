@@ -156,11 +156,25 @@ div {
     font-weight: bold;
 }
 #goBack {
+  /*  position: relative;
+    float:right;
+    vertical-align:bottom;
+    text-align: right;
+    overflow: hidden;
+    height:55px;
+    width:170px;
+*/
+
+
+
+
     list-style-type: none;
     padding-left: 10px;
     padding-right: 10px;
     position: absolute;
-    left:5%;
+    right:5%;
+    bottom: 0px;
+    float: right;
     vertical-align: middle;
     outline: none;
     padding: auto;
@@ -535,7 +549,9 @@ a.popupButton:active {
     transition: opacity .5s ease-in-out;
     -moz-transition: opacity .55s ease-in-out;
     -webkit-transition: opacity .55s ease-in-out;
-    position: relative;
+    position: absolute;
+    right:5%;
+    bottom:50px;
     float:right;
     vertical-align:bottom;
     text-align: right;
@@ -551,6 +567,10 @@ a.popupButton:active {
     position: absolute;
     bottom:3px;
     right: 3px;
+}
+.save-holder{
+    position: relative;
+    float: right;
 }
 
 
